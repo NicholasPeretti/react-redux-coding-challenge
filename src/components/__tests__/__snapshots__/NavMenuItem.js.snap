@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavMenuItem Should match snapshot 1`] = `"<li style=\\"float:right;padding:12px\\"></li>"`;

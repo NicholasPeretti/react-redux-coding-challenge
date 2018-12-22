@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavMenu Should match snapshot 1`] = `"<ul style=\\"display:flex;flex-direction:row;list-style-type:none\\"></ul>"`;

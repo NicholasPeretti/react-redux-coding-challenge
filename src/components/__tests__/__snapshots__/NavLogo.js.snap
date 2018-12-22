@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavLogo Should match snapshot 1`] = `"<img src=\\"logo.png\\" alt=\\"Auto1\\" style=\\"max-height:30px;margin:24px 0px\\"/>"`;
