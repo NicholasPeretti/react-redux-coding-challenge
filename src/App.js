@@ -13,9 +13,7 @@ const App = () => (
             color: context.colors.textColor
           }}
         >
-          <header>
-            <Navbar />
-          </header>
+          <Navbar />
           <main
             style={{
               minHeight: window.innerHeight - 165

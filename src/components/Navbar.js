@@ -9,23 +9,25 @@ class Navbar extends Component {
     return (
       <StyleContext.Consumer>
         {context => (
-          <nav
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              height: '80px',
-              borderBottom: `1px solid ${context.colors.gray}`,
-              padding: `0px ${context.spacing.padding3}`
-            }}
-          >
-            <NavLogo/>
-            <NavMenu>
-              <NavMenuItem>Purchase</NavMenuItem>
-              <NavMenuItem>My Orders</NavMenuItem>
-              <NavMenuItem>Sell</NavMenuItem>
-            </NavMenu>
-          </nav>
+          <header>
+            <nav
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                height: '80px',
+                borderBottom: `1px solid ${context.colors.gray}`,
+                padding: `0px ${context.spacing.padding3}`
+              }}
+            >
+              <NavLogo />
+              <NavMenu>
+                <NavMenuItem>Purchase</NavMenuItem>
+                <NavMenuItem>My Orders</NavMenuItem>
+                <NavMenuItem>Sell</NavMenuItem>
+              </NavMenu>
+            </nav>
+          </header>
         )}
       </StyleContext.Consumer>
     )
