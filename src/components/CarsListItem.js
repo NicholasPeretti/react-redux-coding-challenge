@@ -10,7 +10,8 @@ var CarsListItem = ({ car = {} }) => (
       const articleStyle = {
         border: `1px solid ${context.colors.gray}`,
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        margin: `${context.spacing.padding1} 0px`
       }
 
       return (
