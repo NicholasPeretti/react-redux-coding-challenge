@@ -1,13 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-const style = {
-  width: '40px',
-  height: '30px'
-}
+import StyleContext from '../styleContext'
 
 var CarThumb = ({ url }) => (
-  <img src={url} style={style} />
+  <StyleContext.Consumer>
+    {context => {
+      const style = {
+        width: '100px',
+        height: '80px',
+        margin: context.spacing.padding2
+      }
+      return (
+        <img src={url} style={style} />
+      )
+    }}
+  </StyleContext.Consumer>
 )
 
 CarThumb.propTypes = {

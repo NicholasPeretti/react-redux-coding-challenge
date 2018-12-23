@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CarThumb Should match snapshot 1`] = `"<img src=\\"/pic/pic1.png\\" style=\\"width:40px;height:30px\\"/>"`;
+exports[`CarThumb Should match snapshot 1`] = `"<img src=\\"/pic/pic1.png\\" style=\\"width:100px;height:80px;margin:12px\\"/>"`;
