@@ -1,6 +1,7 @@
 import React from 'react'
 
 const style = {
+  margin: '0px',
   fontSize: '32px',
   fontWeight: 'bold'
 }
