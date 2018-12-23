@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text Should match snapshot 1`] = `"<span style=\\"font-size:14px;font-weight:normal;margin:0px\\">This is a Text</span>"`;
