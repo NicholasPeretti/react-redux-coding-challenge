@@ -1,12 +1,13 @@
 import React from 'react'
 import Text from './Text'
 
-const style = {
-  fontSize: '12px'
-}
-
-const SmallerText = ({ children }) => (
-  <Text style={style}>
+const SmallerText = ({ children, style = {} }) => (
+  <Text
+    style={{
+      fontSize: '12px',
+      ...style
+    }}
+  >
     {children}
   </Text>
 )
