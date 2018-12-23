@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 var CarShortDescription = ({ stockNumber, mileage = {}, color, fuelType }) => (
-  <p>
+  <p style={{ margin: '0px' }}>
     Stock # {stockNumber} - {mileage.number} {mileage.unit} - {fuelType} - {color}
   </p>
 )
