@@ -8,8 +8,7 @@ const StyledFooter = styled.footer`
   flex-direction: row;
   justify-content: center;
   height: 80px;
-  border-top: 1px solid ${Style.colors.gray};
-  border-bottom: 1px solid ${Style.colors.gray};
+  border-top: 2px solid ${Style.colors.gray};
 `
 
 const VericalAlignCenter = styled.div`

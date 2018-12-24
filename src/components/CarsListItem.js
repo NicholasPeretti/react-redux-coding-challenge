@@ -6,7 +6,7 @@ import Style from '../style'
 import styled from 'styled-components'
 
 const StyledArticle = styled.article`
-  border: 1px solid ${Style.colors.gray};
+  border: 2px solid ${Style.colors.gray};
   display: flex;
   flexDirection: row;
   margin: ${Style.spacing.padding1};

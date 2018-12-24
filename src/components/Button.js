@@ -7,7 +7,7 @@ const StyledButton = styled.button`
   background: ${Style.colors.accent};
   width: 128px;
   height: 32px;
-  border: 1px solid ${Style.colors.accent};
+  border: 2px solid ${Style.colors.accent};
   border-radius: 3px;
   color: white;
   cursor: pointer;

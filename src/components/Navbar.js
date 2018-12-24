@@ -10,7 +10,7 @@ const StyledNav = styled.nav`
   flex-direction: row;
   justify-content: space-between;
   height: 80px;
-  border-bottom: 1px solid ${Style.colors.gray};
+  border-bottom: 2px solid ${Style.colors.gray};
   padding: 0px ${Style.spacing.padding3};
 `
 
