@@ -1,4 +1,5 @@
 import React from 'react'
+import Text from './Text'
 import Style from '../style'
 import styled from 'styled-components'
 
@@ -20,7 +21,7 @@ const VericalAlignCenter = styled.div`
 const Footer = () => (
   <StyledFooter>
     <VericalAlignCenter>
-      <p>&#169; AUTO1 Group {new Date().getFullYear()}</p>
+      <Text>&#169; AUTO1 Group {new Date().getFullYear()}</Text>
     </VericalAlignCenter>
   </StyledFooter>
 )
