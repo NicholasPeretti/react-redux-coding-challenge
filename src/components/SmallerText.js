@@ -1,15 +1,8 @@
-import React from 'react'
 import Text from './Text'
+import styled from 'styled-components'
 
-const SmallerText = ({ children, style = {} }) => (
-  <Text
-    style={{
-      fontSize: '12px',
-      ...style
-    }}
-  >
-    {children}
-  </Text>
-)
+const SmallerText = styled(Text)`
+  font-size: 12px;
+`
 
 export default SmallerText
