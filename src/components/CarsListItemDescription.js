@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CarTitle from './CarTitle'
 import CarShortDescription from './CarShortDescription'
-import SmallerText from './SmallerText'
+import Text from './Text'
 import StyleContext from '../styleContext'
 import Link from './Link'
 
@@ -23,9 +23,9 @@ var CarsListItemDescription = ({ car }) => (
             modelName={car.modelName}
           />
           <CarShortDescription {...car} />
-          <SmallerText>
+          <Text>
             <Link>View details</Link>
-          </SmallerText>
+          </Text>
         </section>
       )
     }}
