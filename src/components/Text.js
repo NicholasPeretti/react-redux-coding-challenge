@@ -1,16 +1,16 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const StyledSpan = styled.span`
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0px;
+`
 
 const Text = ({ children, style = {} }) => (
-  <span
-    style={{
-      fontSize: '14px',
-      fontWeight: 'normal',
-      margin: '0px',
-      ...style
-    }}
-  >
+  <StyledSpan style={style}>
     {children}
-  </span>
+  </StyledSpan>
 )
 
 export default Text
