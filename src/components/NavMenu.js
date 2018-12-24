@@ -1,15 +1,9 @@
-import React from 'react'
+import styled from 'styled-components'
 
-var NavMenu = ({ children }) => (
-  <ul
-    style={{
-      display: 'flex',
-      flexDirection: 'row',
-      listStyleType: 'none'
-    }}
-  >
-    {children}
-  </ul>
-)
+const NavMenu = styled.ul`
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+`
 
 export default NavMenu
