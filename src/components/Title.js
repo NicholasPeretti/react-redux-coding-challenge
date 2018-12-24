@@ -1,16 +1,9 @@
-import React from 'react'
+import styled from 'styled-components'
 
-const Title = ({ children, style = {} }) => (
-  <h1
-    style={{
-      margin: '0px',
-      fontSize: '32px',
-      fontWeight: 'bold',
-      ...style
-    }}
-  >
-    {children}
-  </h1>
-)
+const Title = styled.h1`
+  margin: 0px;
+  font-size: 32px;
+  font-weight: bold;
+`
 
 export default Title
