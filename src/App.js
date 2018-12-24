@@ -1,29 +1,23 @@
 import React from 'react'
-import StyleContext from './styleContext'
-import style from './style'
+import Style from './style'
+import styled from 'styled-components'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
+const AppContainer = styled.div`
+  color: ${Style.colors.textColor};
+`
+const StyledMain = styled.main`
+  min-height: ${window.innerHeight - 165}px;
+`
+
 const App = () => (
-  <StyleContext.Provider value={style}>
-    <StyleContext.Consumer>
-      {context => (
-        <div
-          style={{
-            color: context.colors.textColor
-          }}
-        >
-          <Navbar />
-          <main
-            style={{
-              minHeight: window.innerHeight - 165
-            }}
-          />
-          <Footer />
-        </div>
-      )}
-    </StyleContext.Consumer>
-  </StyleContext.Provider>
+  <AppContainer>
+    <Navbar />
+    <StyledMain>
+    </StyledMain>
+    <Footer />
+  </AppContainer>
 )
 
 export default App
