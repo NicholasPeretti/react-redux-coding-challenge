@@ -1,10 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import StyleContext from '../styleContext'
 
 var Link = ({ to, style, children }) => (
-  <a href={to} style={{ ...style }}>
-    {children}
-  </a>
+  <StyleContext.Consumer>
+    {context => (
+      <a
+        href={to}
+        style={{
+          color: context.colors.accent,
+          ...style
+        }}
+      >
+        {children}
+      </a>
+    )}
+  </StyleContext.Consumer>
 )
 
 Link.propTypes = {
