@@ -4,6 +4,7 @@ import CarTitle from './CarTitle'
 import CarShortDescription from './CarShortDescription'
 import SmallerText from './SmallerText'
 import StyleContext from '../styleContext'
+import Link from './Link'
 
 var CarsListItemDescription = ({ car }) => (
   <StyleContext.Consumer>
@@ -23,7 +24,7 @@ var CarsListItemDescription = ({ car }) => (
           />
           <CarShortDescription {...car} />
           <SmallerText>
-            <a href='#' style={{ color: context.colors.accent }}>View details</a>
+            <Link>View details</Link>
           </SmallerText>
         </section>
       )
