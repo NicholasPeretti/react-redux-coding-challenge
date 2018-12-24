@@ -1,27 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import StyleContext from '../styleContext'
 import CarsListItemDescription from './CarsListItemDescription'
 import CarThumb from './CarThumb'
+import Style from '../style'
+import styled from 'styled-components'
+
+const StyledArticle = styled.article`
+  border: 1px solid ${Style.colors.gray};
+  display: flex;
+  flexDirection: row;
+  margin: ${Style.spacing.padding1};
+`
 
 var CarsListItem = ({ car = {} }) => (
-  <StyleContext.Consumer>
-    {context => {
-      const articleStyle = {
-        border: `1px solid ${context.colors.gray}`,
-        display: 'flex',
-        flexDirection: 'row',
-        margin: `${context.spacing.padding1} 0px`
-      }
-
-      return (
-        <article style={articleStyle}>
-          <CarThumb url={car.pictureUrl} />
-          <CarsListItemDescription car={car}/>
-        </article>
-      )
-    }}
-  </StyleContext.Consumer>
+  <StyledArticle>
+    <CarThumb url={car.pictureUrl} />
+    <CarsListItemDescription car={car}/>
+  </StyledArticle>
 )
 
 CarsListItem.propTypes = {
