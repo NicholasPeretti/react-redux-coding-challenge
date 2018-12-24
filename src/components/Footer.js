@@ -1,35 +1,28 @@
-import React, { Component } from 'react'
-import StyleContext from '../styleContext'
+import React from 'react'
+import Style from '../style'
+import styled from 'styled-components'
 
-class Navbar extends Component {
-  render () {
-    return (
-      <StyleContext.Consumer>
-        {context => (
-          <footer
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              height: '80px',
-              borderTop: `1px solid ${context.colors.gray}`,
-              borderBottom: `1px solid ${context.colors.gray}`
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center'
-              }}
-            >
-              <p>&#169; AUTO1 Group {new Date().getFullYear()}</p>
-            </div>
-          </footer>
-        )}
-      </StyleContext.Consumer>
-    )
-  }
-}
+const StyledFooter = styled.footer`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 80px;
+  border-top: 1px solid ${Style.colors.gray};
+  border-bottom: 1px solid ${Style.colors.gray};
+`
 
-export default Navbar
+const VericalAlignCenter = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
+const Footer = () => (
+  <StyledFooter>
+    <VericalAlignCenter>
+      <p>&#169; AUTO1 Group {new Date().getFullYear()}</p>
+    </VericalAlignCenter>
+  </StyledFooter>
+)
+
+export default Footer
