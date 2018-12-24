@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import SmallerText from './SmallerText'
+import Text from './Text'
 
 var CarShortDescription = ({ stockNumber, mileage = {}, color, fuelType }) => (
-  <SmallerText>
+  <Text>
     Stock # {stockNumber} - {mileage.number} {mileage.unit} - {fuelType} - {color}
-  </SmallerText>
+  </Text>
 )
 
 CarShortDescription.propTypes = {
