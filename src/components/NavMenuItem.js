@@ -1,19 +1,16 @@
 import React from 'react'
-import StyleContext from '../styleContext'
+import Style from '../style'
+import styled from 'styled-components'
+
+const StyledLi = styled.li`
+  float: right;
+  padding: ${Style.spacing.padding2};
+`
 
 var NavMenuItem = ({ children }) => (
-  <StyleContext.Consumer>
-    {context =>
-      <li
-        style={{
-          float: 'right',
-          padding: context.spacing.padding2
-        }}
-      >
-        {children}
-      </li>
-    }
-  </StyleContext.Consumer>
+  <StyledLi>
+    {children}
+  </StyledLi>
 )
 
 export default NavMenuItem
