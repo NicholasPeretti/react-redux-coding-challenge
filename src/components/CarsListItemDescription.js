@@ -3,33 +3,29 @@ import PropTypes from 'prop-types'
 import CarTitle from './CarTitle'
 import CarShortDescription from './CarShortDescription'
 import Text from './Text'
-import StyleContext from '../styleContext'
 import Link from './Link'
 
+import Style from '../style'
+import styled from 'styled-components'
+
+const StyledSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: ${Style.spacing.padding2};
+`
+
 var CarsListItemDescription = ({ car }) => (
-  <StyleContext.Consumer>
-    {context => {
-      const style = {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        fontSize: '14px',
-        margin: context.spacing.padding2
-      }
-      return (
-        <section style={style}>
-          <CarTitle
-            manufacturerName={car.manufacturerName}
-            modelName={car.modelName}
-          />
-          <CarShortDescription {...car} />
-          <Text>
-            <Link>View details</Link>
-          </Text>
-        </section>
-      )
-    }}
-  </StyleContext.Consumer>
+  <StyledSection>
+    <CarTitle
+      manufacturerName={car.manufacturerName}
+      modelName={car.modelName}
+    />
+    <CarShortDescription {...car} />
+    <Text>
+      <Link>View details</Link>
+    </Text>
+  </StyledSection>
 )
 
 CarsListItemDescription.propTypes = {
