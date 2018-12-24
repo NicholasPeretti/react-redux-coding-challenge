@@ -1,16 +1,16 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const StyledH3 = styled.h3`
+  margin: 0px;
+  font-size: 18px;
+  font-weight: normal;
+`
 
 const SubTitle = ({ children, style = {} }) => (
-  <h3
-    style={{
-      margin: '0px',
-      fontSize: '18px',
-      fontWeight: 'normal',
-      ...style
-    }}
-  >
+  <StyledH3 style={style}>
     {children}
-  </h3>
+  </StyledH3>
 )
 
 export default SubTitle
