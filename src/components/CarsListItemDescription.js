@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CarTitle from './CarTitle'
 import CarShortDescription from './CarShortDescription'
+import SmallerText from './SmallerText'
 import StyleContext from '../styleContext'
 
 var CarsListItemDescription = ({ car }) => (
@@ -21,7 +22,9 @@ var CarsListItemDescription = ({ car }) => (
             modelName={car.modelName}
           />
           <CarShortDescription {...car} />
-          <a href='#'>View details</a>
+          <SmallerText>
+            <a href='#' style={{ color: context.colors.accent }}>View details</a>
+          </SmallerText>
         </section>
       )
     }}

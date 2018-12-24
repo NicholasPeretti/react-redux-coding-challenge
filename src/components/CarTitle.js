@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import SubTitleBold from './SubTitleBold'
 
 var CarTitle = ({ manufacturerName, modelName }) => (
-  <h3 style={{ margin: '0px' }}>
+  <SubTitleBold>
     {manufacturerName} {modelName}
-  </h3>
+  </SubTitleBold>
 )
 
 CarTitle.propTypes = {
