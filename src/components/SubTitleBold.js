@@ -1,15 +1,8 @@
-import React from 'react'
 import SubTitle from './SubTitle'
+import styled from 'styled-components'
 
-const SubTitleBold = ({ children, style = {} }) => (
-  <SubTitle
-    style={{
-      fontWeight: 'bold',
-      ...style
-    }}
-  >
-    {children}
-  </SubTitle>
-)
+const SubTitleBold = styled(SubTitle)`
+  font-weight: bold;
+`
 
 export default SubTitleBold
