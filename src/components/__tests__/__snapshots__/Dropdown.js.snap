@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown Should match snapshot 1`] = `"<div class=\\"sc-bwzfXH gYNwqV\\"><button class=\\"sc-htpNat kYidVU\\"><span class=\\"sc-bdVaJa bkmfbd\\">opt1</span><span class=\\"sc-bxivhb kAOnLj\\"><span>▼</span></span></button></div>"`;
+
+exports[`Dropdown Should match snapshot when open 1`] = `"<div class=\\"sc-bwzfXH gYNwqV\\"><button class=\\"sc-htpNat kYidVU\\"><span class=\\"sc-bdVaJa bkmfbd\\">opt1</span><span class=\\"sc-bxivhb kAOnLj\\"><span>▲</span></span></button><div class=\\"sc-ifAKCX jBGnp\\"><ul class=\\"sc-EHOje huREYR\\"><li value=\\"opt1\\"><span class=\\"sc-bdVaJa bkmfbd\\">opt1</span></li><li value=\\"opt2\\"><span class=\\"sc-bdVaJa bkmfbd\\">opt2</span></li><li value=\\"opt3\\"><span class=\\"sc-bdVaJa bkmfbd\\">opt3</span></li></ul></div></div>"`;
