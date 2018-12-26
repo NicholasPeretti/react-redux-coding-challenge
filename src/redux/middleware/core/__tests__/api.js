@@ -120,5 +120,11 @@ describe('api', () => {
       fakeAction.type = 'WRONG_ACTION_TYPE'
       expect(api.isApiAction(fakeAction)).toBe(false)
     })
+
+    test('With the namespace param, it should check the action namespace', () => {
+      const requestAction = api.apiRequest(MOCK_URL, MOCK_METHOD, MOCK_NAMESPACE)
+      expect(api.isApiAction(requestAction, 'RANDOM_NAMESPACE')).toBe(false)
+      expect(api.isApiAction(requestAction, MOCK_NAMESPACE)).toBe(true)
+    })
   })
 })

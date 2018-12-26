@@ -20,7 +20,7 @@ export const apiError = (error, namespace) => ({
   meta: { namespace }
 })
 
-export const isApiAction = (action = {}) => {
+export const isApiAction = (action = {}, namespace) => {
   if (
     !action ||
     !action.type ||
@@ -35,7 +35,13 @@ export const isApiAction = (action = {}) => {
     API_SUCCESS,
     API_REQUEST
   ]
-  if (availableActionTypes.indexOf(action.type) < 0) return false
+  if (availableActionTypes.indexOf(action.type) < 0) {
+    return false
+  }
+
+  if (namespace && namespace !== action.meta.namespace) {
+    return false
+  }
 
   return true
 }
