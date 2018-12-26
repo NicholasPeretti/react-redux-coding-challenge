@@ -107,6 +107,19 @@ describe('Cars', () => {
         expect(action.resultsCount).toEqual(0)
       })
     })
+
+    describe('setError', () => {
+      test('Should have the correct action type', () => {
+        const action = Cars.setError()
+        expect(action.type).toEqual(Cars.SET_ERROR)
+      })
+
+      test('Should have the correct value', () => {
+        const error = 'ERROR'
+        const action = Cars.setError(error)
+        expect(action.error).toEqual(error)
+      })
+    })
   })
 
   describe('Reducer', () => {
@@ -161,6 +174,17 @@ describe('Cars', () => {
           Cars.setResultsCount(resultsCount)
         )
         expect(newState.resultsCount).toEqual(resultsCount)
+      })
+    })
+
+    describe('setError', () => {
+      test('Should set the `error` property to the value passed', () => {
+        const error = 'Error'
+        const newState = Cars.default(
+          Cars.defaultState,
+          Cars.setError(error)
+        )
+        expect(newState.error).toEqual(error)
       })
     })
   })

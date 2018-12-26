@@ -5,6 +5,7 @@ export const SET_FETCHING = `${NAMESPACE} SET_FETCHING`
 export const SET_PAGE = `${NAMESPACE} SET_PAGE`
 export const SET_CARS = `${NAMESPACE} SET_CARS`
 export const SET_RESULTS_COUNT = `${NAMESPACE} SET_RESULTS_COUNT`
+export const SET_ERROR = `${NAMESPACE} SET_ERROR`
 
 export const setFetching = (fetching) => ({
   type: SET_FETCHING,
@@ -26,12 +27,18 @@ export const setResultsCount = (resultsCount = 0) => ({
   resultsCount
 })
 
+export const setError = (error) => ({
+  type: SET_ERROR,
+  error
+})
+
 export const defaultState = {
   cars: [],
   carsMap: new Map(),
   fetching: false,
   page: 1,
-  resultsCount: 0
+  resultsCount: 0,
+  error: null
 }
 
 export default function reducer (state = defaultState, action = {}) {
@@ -67,6 +74,13 @@ export default function reducer (state = defaultState, action = {}) {
     case SET_RESULTS_COUNT: {
       state = Object.assign({}, state, {
         resultsCount: action.resultsCount
+      })
+      break
+    }
+
+    case SET_ERROR: {
+      state = Object.assign({}, state, {
+        error: action.error
       })
       break
     }
