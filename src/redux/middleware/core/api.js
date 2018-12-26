@@ -20,6 +20,26 @@ export const apiError = (error, namespace) => ({
   meta: { namespace }
 })
 
+export const isApiAction = (action = {}) => {
+  if (
+    !action ||
+    !action.type ||
+    typeof action.type !== 'string' ||
+    !action.meta ||
+    !action.meta.namespace ||
+    typeof action.meta.namespace !== 'string'
+  ) return false
+
+  const availableActionTypes = [
+    API_ERROR,
+    API_SUCCESS,
+    API_REQUEST
+  ]
+  if (availableActionTypes.indexOf(action.type) < 0) return false
+
+  return true
+}
+
 export default function middleware () {
   return dispatch => action => {
     dispatch(action)

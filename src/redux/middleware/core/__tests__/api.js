@@ -99,4 +99,26 @@ describe('api', () => {
       })
     })
   })
+
+  describe('isApiAction', () => {
+    test('Should be a function', () => {
+      expect(typeof api.isApiAction).toEqual('function')
+    })
+
+    test('Should return true with all the action creators', () => {
+      const requestAction = api.apiRequest(MOCK_URL, MOCK_METHOD, MOCK_NAMESPACE)
+      const successAction = api.apiSuccess(MOCK_DATA, MOCK_NAMESPACE)
+      const errorAction = api.apiError(MOCK_DATA, MOCK_NAMESPACE)
+
+      expect(api.isApiAction(requestAction)).toEqual(true)
+      expect(api.isApiAction(successAction)).toEqual(true)
+      expect(api.isApiAction(errorAction)).toEqual(true)
+    })
+
+    test('Should return false when the action.type an api action', () => {
+      let fakeAction = api.apiSuccess(MOCK_DATA, MOCK_NAMESPACE)
+      fakeAction.type = 'WRONG_ACTION_TYPE'
+      expect(api.isApiAction(fakeAction)).toBe(false)
+    })
+  })
 })
