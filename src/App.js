@@ -1,4 +1,6 @@
 import React from 'react'
+import { Provider } from 'react-redux'
+import store from './redux/store'
 import Style from './style'
 import styled from 'styled-components'
 import Navbar from './components/Navbar'
@@ -12,12 +14,14 @@ const StyledMain = styled.main`
 `
 
 const App = () => (
-  <AppContainer>
-    <Navbar />
-    <StyledMain>
-    </StyledMain>
-    <Footer />
-  </AppContainer>
+  <Provider store={store}>
+    <AppContainer>
+      <Navbar />
+      <StyledMain>
+      </StyledMain>
+      <Footer />
+    </AppContainer>
+  </Provider>
 )
 
 export default App
