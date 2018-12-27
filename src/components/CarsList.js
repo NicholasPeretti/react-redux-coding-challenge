@@ -1,16 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import CarsListItem from './CarsListItem'
+import styled from 'styled-components'
 
-const style = {
-  display: 'flex',
-  flexDirection: 'column'
-}
+const ListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
 
 var CarsList = ({ cars }) => (
-  <div style={style}>
+  <ListContainer>
     {cars.map((car, key) => <CarsListItem car={car} key={key}/>)}
-  </div>
+  </ListContainer>
 )
 
 CarsList.propTypes = {
