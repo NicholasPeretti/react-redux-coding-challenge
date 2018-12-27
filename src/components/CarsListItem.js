@@ -9,7 +9,7 @@ const StyledArticle = styled.article`
   border: 2px solid ${Style.colors.gray};
   display: flex;
   flexDirection: row;
-  margin: ${Style.spacing.padding1};
+  margin: ${Style.spacing.padding1} 0px;
 `
 
 var CarsListItem = ({ car = {} }) => (
