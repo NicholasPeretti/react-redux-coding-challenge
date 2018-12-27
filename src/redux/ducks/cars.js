@@ -44,6 +44,10 @@ export const getPage = (state) => (
   getState(state).page
 )
 
+export const isFetching = (state) => (
+  getState(state).fetching
+)
+
 export const defaultState = {
   cars: [],
   carsMap: new Map(),

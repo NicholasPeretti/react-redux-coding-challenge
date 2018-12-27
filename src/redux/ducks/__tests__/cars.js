@@ -147,6 +147,14 @@ describe('Cars', () => {
         expect(page).toEqual(Cars.defaultState.page)
       })
     })
+
+    describe('isFetching', () => {
+      test('Should return the fetching property', () => {
+        const globalState = getGlobalState()
+        const fetching = Cars.isFetching(globalState)
+        expect(fetching).toEqual(Cars.defaultState.fetching)
+      })
+    })
   })
 
   describe('Reducer', () => {
