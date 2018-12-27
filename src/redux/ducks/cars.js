@@ -40,6 +40,10 @@ export const getCars = (state) => (
   getState(state).cars
 )
 
+export const getPage = (state) => (
+  getState(state).page
+)
+
 export const defaultState = {
   cars: [],
   carsMap: new Map(),

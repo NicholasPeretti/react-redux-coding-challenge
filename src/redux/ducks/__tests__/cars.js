@@ -139,6 +139,14 @@ describe('Cars', () => {
         expect(cars).toEqual(Cars.defaultState.cars)
       })
     })
+
+    describe('getPage', () => {
+      test('Should return the current page', () => {
+        const globalState = getGlobalState()
+        const page = Cars.getPage(globalState)
+        expect(page).toEqual(Cars.defaultState.page)
+      })
+    })
   })
 
   describe('Reducer', () => {
