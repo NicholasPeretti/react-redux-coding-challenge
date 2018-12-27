@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import CarsListItem from './CarsListItem'
 import styled from 'styled-components'
+import CarPropType from '../utils/propTypes/car'
 
 const ListContainer = styled.div`
   display: flex;
@@ -17,19 +18,8 @@ var CarsList = ({ cars }) => (
 
 CarsList.propTypes = {
   cars: PropTypes.arrayOf(
-    PropTypes.shape({
-      stockNumber: PropTypes.number.isRequired,
-      manufacturerName: PropTypes.string.isRequired,
-      modelName: PropTypes.string.isRequired,
-      color: PropTypes.string.isRequired,
-      mileage: PropTypes.shape({
-        number: PropTypes.number.isRequired,
-        unit: PropTypes.string.isRequired
-      }).isRequired,
-      fuelType: PropTypes.string.isRequired,
-      pictureUrl: PropTypes.string.isRequired
-    }).isRequired
-  )
+    CarPropType
+  ).isRequired
 }
 
 export default CarsList

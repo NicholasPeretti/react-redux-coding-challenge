@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import CarPropType from '../utils/propTypes/car'
 import CarTitle from './CarTitle'
 import CarShortDescription from './CarShortDescription'
 import Text from './Text'
@@ -29,18 +29,7 @@ var CarsListItemDescription = ({ car }) => (
 )
 
 CarsListItemDescription.propTypes = {
-  car: PropTypes.shape({
-    stockNumber: PropTypes.number.isRequired,
-    manufacturerName: PropTypes.string.isRequired,
-    modelName: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
-    mileage: PropTypes.shape({
-      number: PropTypes.number.isRequired,
-      unit: PropTypes.string.isRequired
-    }).isRequired,
-    fuelType: PropTypes.string.isRequired,
-    pictureUrl: PropTypes.string.isRequired
-  }).isRequired
+  car: CarPropType.isRequired
 }
 
 export default CarsListItemDescription

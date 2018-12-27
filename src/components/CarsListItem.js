@@ -1,9 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import CarsListItemDescription from './CarsListItemDescription'
 import CarThumb from './CarThumb'
 import Style from '../style'
 import styled from 'styled-components'
+import CarPropType from '../utils/propTypes/car'
 
 const StyledArticle = styled.article`
   border: 2px solid ${Style.colors.gray};
@@ -20,18 +20,7 @@ var CarsListItem = ({ car = {} }) => (
 )
 
 CarsListItem.propTypes = {
-  car: PropTypes.shape({
-    stockNumber: PropTypes.number.isRequired,
-    manufacturerName: PropTypes.string.isRequired,
-    modelName: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
-    mileage: PropTypes.shape({
-      number: PropTypes.number.isRequired,
-      unit: PropTypes.string.isRequired
-    }).isRequired,
-    fuelType: PropTypes.string.isRequired,
-    pictureUrl: PropTypes.string.isRequired
-  }).isRequired
+  car: CarPropType.isRequired
 }
 
 export default CarsListItem
