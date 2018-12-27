@@ -48,12 +48,17 @@ export const isFetching = (state) => (
   getState(state).fetching
 )
 
+export const getPageSize = (state) => (
+  getState(state).pageSize
+)
+
 export const defaultState = {
   cars: [],
   carsMap: new Map(),
   fetching: false,
   page: 1,
   resultsCount: 0,
+  pageSize: 10,
   error: null
 }
 

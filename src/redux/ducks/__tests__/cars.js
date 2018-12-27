@@ -155,6 +155,14 @@ describe('Cars', () => {
         expect(fetching).toEqual(Cars.defaultState.fetching)
       })
     })
+
+    describe('getPageSize', () => {
+      test('Should return the page size', () => {
+        const globalState = getGlobalState()
+        const pageSize = Cars.getPageSize(globalState)
+        expect(pageSize).toEqual(Cars.defaultState.pageSize)
+      })
+    })
   })
 
   describe('Reducer', () => {
