@@ -1,4 +1,5 @@
 import DuckTest from '../../../utils/tests/duck'
+import { getGlobalState } from '../../../utils/tests/reducer'
 import { Map } from 'immutable'
 import * as Cars from '../cars'
 
@@ -118,6 +119,24 @@ describe('Cars', () => {
         const error = 'ERROR'
         const action = Cars.setError(error)
         expect(action.error).toEqual(error)
+      })
+    })
+  })
+
+  describe('Selectors', () => {
+    describe('getState', () => {
+      test('Should return the default state', () => {
+        const globalState = getGlobalState()
+        const state = Cars.getState(globalState)
+        expect(state).toEqual(Cars.defaultState)
+      })
+    })
+
+    describe('getCars', () => {
+      test('Should return the cars array', () => {
+        const globalState = getGlobalState()
+        const cars = Cars.getCars(globalState)
+        expect(cars).toEqual(Cars.defaultState.cars)
       })
     })
   })

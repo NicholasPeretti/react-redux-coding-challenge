@@ -1,3 +1,9 @@
+import mainReducer from '../../redux/reducer'
+
+export const getGlobalState = () => (
+  mainReducer()
+)
+
 export default reducer => {
   describe('Reducer generic tests', () => {
     test('Should be a function', () => {

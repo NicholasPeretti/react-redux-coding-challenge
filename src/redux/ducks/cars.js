@@ -32,6 +32,14 @@ export const setError = (error) => ({
   error
 })
 
+export const getState = (state) => (
+  state[NAMESPACE]
+)
+
+export const getCars = (state) => (
+  getState(state).cars
+)
+
 export const defaultState = {
   cars: [],
   carsMap: new Map(),
