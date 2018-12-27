@@ -52,6 +52,10 @@ export const getPageSize = (state) => (
   getState(state).pageSize
 )
 
+export const getResultsCount = (state) => (
+  getState(state).resultsCount
+)
+
 export const defaultState = {
   cars: [],
   carsMap: new Map(),

@@ -163,6 +163,14 @@ describe('Cars', () => {
         expect(pageSize).toEqual(Cars.defaultState.pageSize)
       })
     })
+
+    describe('getResultsCount', () => {
+      test('Should return the results count', () => {
+        const globalState = getGlobalState()
+        const resultsCount = Cars.getResultsCount(globalState)
+        expect(resultsCount).toEqual(Cars.defaultState.resultsCount)
+      })
+    })
   })
 
   describe('Reducer', () => {
