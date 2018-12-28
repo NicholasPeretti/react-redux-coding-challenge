@@ -1,6 +1,6 @@
-export const createMockStore = (middleware) => {
+export const createMockStore = (middleware, initialState = {}) => {
   const store = {
-    getState: jest.fn(() => ({})),
+    getState: jest.fn(() => initialState),
     dispatch: jest.fn()
   }
   const next = jest.fn()
