@@ -52,7 +52,7 @@ export default function middleware () {
 
     if (action.type === API_REQUEST) {
       let { url, method, namespace } = action.meta
-      let fetchParams = populateFetchParams(url, method, action.params)
+      let fetchParams = populateFetchParams(url, method, action.payload)
 
       fetch(...fetchParams)
         .then(res => res.json())
