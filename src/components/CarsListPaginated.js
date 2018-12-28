@@ -3,26 +3,21 @@ import PropTypes from 'prop-types'
 import CarPropType from '../utils/propTypes/car'
 import styled from 'styled-components'
 import CarsList from './CarsList'
+import PaginationNav from './PaginationNav'
 import SubTitleBold from './SubTitleBold'
 import SubTitle from './SubTitle'
 import Style from '../style'
 
-const ListContainer = styled.div`
+const Row = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
 `
 
-const Row = styled.div`
-display: flex;
-flex-direction: row;
-width: 100%
-`
-
 const Column = styled.div`
-display: flex;
-flex-direction: column;
-width: 100%
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 `
 
 class CarsListPaginated extends React.Component {
@@ -31,26 +26,40 @@ class CarsListPaginated extends React.Component {
   }
 
   render () {
-    const { cars, fetching, resultsCount } = this.props
+    const {
+      cars,
+      fetching,
+      resultsCount,
+      fetchPage,
+      page,
+      hasNext,
+      hasPrev,
+      totalPages
+    } = this.props
 
     if (fetching) {
-      return (<h3>Loading...</h3>)
+      return <h3>Loading...</h3>
     }
 
     return (
-      <ListContainer>
+      <Column>
         <Row>
           <Column>
-            <SubTitleBold>
-              Available cars
-            </SubTitleBold>
+            <SubTitleBold>Available cars</SubTitleBold>
             <SubTitle style={{ margin: `${Style.spacing.padding3} 0px` }}>
               Showing {cars.length} of {resultsCount} results
             </SubTitle>
           </Column>
         </Row>
-        <CarsList cars={cars}/>
-      </ListContainer>
+        <CarsList cars={cars} />
+        <PaginationNav
+          page={page}
+          totalPages={totalPages}
+          hasNext={hasNext}
+          hasPrev={hasPrev}
+          fetchPage={fetchPage}
+        />
+      </Column>
     )
   }
 }
@@ -59,7 +68,11 @@ CarsListPaginated.propTypes = {
   cars: PropTypes.arrayOf(CarPropType).isRequired,
   resultsCount: PropTypes.number.isRequired,
   fetchPage: PropTypes.func.isRequired,
-  fetching: PropTypes.bool.isRequired
+  fetching: PropTypes.bool.isRequired,
+  page: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  hasNext: PropTypes.bool.isRequired,
+  hasPrev: PropTypes.bool.isRequired
 }
 
 export default CarsListPaginated

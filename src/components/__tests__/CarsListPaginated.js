@@ -15,7 +15,11 @@ const props = {
   cars: [],
   resultsCount: 0,
   fetchPage: jest.fn(),
-  fetching: false
+  fetching: false,
+  hasNext: false,
+  hasPrev: false,
+  page: 1,
+  totalPages: 1
 }
 
 describe('CarsListPaginated', () => {
