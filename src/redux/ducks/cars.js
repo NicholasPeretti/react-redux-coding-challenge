@@ -47,8 +47,9 @@ export const getResultsCount = state => getState(state).resultsCount
 export const getTotalPages = state => {
   const resultsCount = getResultsCount(state)
   const pageSize = getPageSize(state)
+  const pagesCount = parseInt(resultsCount / pageSize) + ((resultsCount % pageSize) ? 1 : 0)
 
-  return parseInt(resultsCount / pageSize) + (resultsCount % pageSize) ? 1 : 0
+  return pagesCount || 1
 }
 
 export const defaultState = {

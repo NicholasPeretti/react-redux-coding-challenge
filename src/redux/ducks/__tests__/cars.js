@@ -174,14 +174,21 @@ describe('Cars', () => {
 
     describe('getTotalPages', () => {
       test('Should return the pages count', () => {
-        const globalState = getGlobalState()
+        var globalState = getGlobalState()
         globalState.resultsCount = 97
         const pagesCount = Cars.getTotalPages(globalState)
         const { pageSize, resultsCount } = globalState
-        const expectedPagesCount =
+        var expectedPagesCount =
           parseInt(resultsCount / pageSize) + (resultsCount % pageSize) ? 1 : 0
 
+        expectedPagesCount = expectedPagesCount || 1
+
         expect(pagesCount).toEqual(expectedPagesCount)
+      })
+      test('Should return 1 with resultsCount 0', () => {
+        var globalState = getGlobalState()
+        globalState.CARS.resultsCount = 0
+        expect(Cars.getTotalPages(globalState)).toEqual(1)
       })
     })
   })
