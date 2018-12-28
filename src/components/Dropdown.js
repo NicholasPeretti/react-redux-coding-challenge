@@ -91,7 +91,7 @@ class Dropdown extends React.Component {
   }
 
   onSelectItem (e) {
-    const value = e.target.attributes.value.value
+    const value = e.target.closest('li').getAttribute('value')
     this.setState({ value, showList: false }, () => {
       this.triggerOnChange()
     })
