@@ -18,20 +18,29 @@ const StyledText = styled(Text)`
   margin-bottom: ${Style.spacing.padding1};
 `
 
-var CarsListSortBox = ({ setSort }) => {
+var CarsListSortBox = ({ setSort, value }) => {
   var listOptions = [
     NONE,
     MILEAGE_ASC,
     MILEAGE_DESC
   ]
 
+  var currentVal = NONE
+  if (value === 1) currentVal = MILEAGE_ASC
+  if (value === -1) currentVal = MILEAGE_DESC
+
   return (
     <Box>
       <StyledText>Sort by</StyledText>
       <Dropdown
+        value={currentVal}
         items={listOptions}
         onChange={(val) => {
-          let sortValue = (val === NONE) ? null : val
+          let sortValue = null
+
+          if (val === MILEAGE_ASC) sortValue = 1
+          if (val === MILEAGE_DESC) sortValue = -1
+
           setSort(sortValue)
         }}
       />
@@ -40,7 +49,8 @@ var CarsListSortBox = ({ setSort }) => {
 }
 
 CarsListSortBox.propTypes = {
-  setSort: PropTypes.func.isRequired
+  setSort: PropTypes.func.isRequired,
+  value: PropTypes.number
 }
 
 export default CarsListSortBox
