@@ -191,6 +191,21 @@ describe('Cars', () => {
         expect(Cars.getTotalPages(globalState)).toEqual(1)
       })
     })
+
+    describe('hasNext', () => {
+      test('Should return true when there is a next page', () => {
+        var globalState = getGlobalState()
+        globalState.CARS.resultsCount = 97
+        const hasNext = Cars.hasNext(globalState)
+        expect(hasNext).toEqual(true)
+      })
+      test('Should return false when there is NOT a next page', () => {
+        var globalState = getGlobalState()
+        globalState.CARS.resultsCount = 0
+        const hasNext = Cars.hasNext(globalState)
+        expect(hasNext).toEqual(false)
+      })
+    })
   })
 
   describe('Reducer', () => {

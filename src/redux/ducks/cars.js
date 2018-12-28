@@ -52,6 +52,13 @@ export const getTotalPages = state => {
   return pagesCount || 1
 }
 
+export const hasNext = state => {
+  const page = getPage(state)
+  const totalPages = getTotalPages(state)
+
+  return page < totalPages
+}
+
 export const defaultState = {
   cars: [],
   carsMap: new Map(),
