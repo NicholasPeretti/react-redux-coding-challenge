@@ -78,6 +78,11 @@ class Dropdown extends React.Component {
     const { items } = props
 
     if (state.value) return null
+    else if (props.value) {
+      return Object.assign({}, state, {
+        value: props.value
+      })
+    }
 
     return Object.assign({}, state, {
       value: items[0]
@@ -138,6 +143,7 @@ class Dropdown extends React.Component {
 
 Dropdown.propTypes = {
   items: PropTypes.arrayOf(PropTypes.string),
+  value: PropTypes.string,
   onChange: PropTypes.func
 }
 
