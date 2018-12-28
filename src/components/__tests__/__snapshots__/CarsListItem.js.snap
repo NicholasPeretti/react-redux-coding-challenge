@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CarsListItem Should match snapshot 1`] = `"<article class=\\"sc-bZQynM hEXood\\"><img src=\\"http://localhost:3001/car.svg\\" class=\\"sc-EHOje qtPkP\\"/><section class=\\"sc-ifAKCX hPHZRJ\\"><h3 class=\\"sc-bdVaJa sc-bwzfXH knfVVl\\">Fiat Talento</h3><span class=\\"sc-htpNat lptLpj\\">Stock # 86987 - 102586 km - Petrol - white</span><span class=\\"sc-htpNat lptLpj\\"><a class=\\"sc-bxivhb cPGlNl\\">View details</a></span></section></article>"`;
+exports[`CarsListItem Should match snapshot 1`] = `"<article class=\\"sc-bZQynM hEXood\\"><img src=\\"http://localhost:3001/car.svg\\" class=\\"sc-EHOje qtPkP\\"/><section class=\\"sc-ifAKCX hPHZRJ\\"><h3 class=\\"sc-bdVaJa sc-bwzfXH knfVVl\\">Fiat Talento</h3><span class=\\"sc-htpNat lptLpj\\">Stock # 86987 - 102586 km - Petrol - white</span><span class=\\"sc-htpNat lptLpj\\"><a class=\\"sc-bxivhb cPGlNl\\" href=\\"/86987\\">View details</a></span></section></article>"`;

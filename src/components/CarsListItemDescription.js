@@ -23,7 +23,7 @@ var CarsListItemDescription = ({ car }) => (
     />
     <CarShortDescription {...car} />
     <Text>
-      <Link>View details</Link>
+      <Link to={`/${car.stockNumber}`}>View details</Link>
     </Text>
   </StyledSection>
 )

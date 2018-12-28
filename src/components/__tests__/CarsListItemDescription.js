@@ -2,6 +2,13 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import CarsListItemDescription from '../CarsListItemDescription'
 import PresentationalTest from '../../utils/tests/presentational'
+import { MemoryRouter } from 'react-router-dom'
+
+const WrappedCarsListItemDescription = props => (
+  <MemoryRouter>
+    <CarsListItemDescription {...props} />
+  </MemoryRouter>
+)
 
 const props = {
   car: {
@@ -19,9 +26,9 @@ const props = {
 }
 
 describe('CarsListItemDescription', () => {
-  PresentationalTest(CarsListItemDescription, props)
+  PresentationalTest(WrappedCarsListItemDescription, props)
 
-  const wrapper = shallow(<CarsListItemDescription {...props} />)
+  const wrapper = shallow(<WrappedCarsListItemDescription {...props} />)
 
   test('Should match snapshot', () => {
     expect(wrapper.html()).toMatchSnapshot()

@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Style from '../style'
 import styled from 'styled-components'
+import { Link as RouterLink } from 'react-router-dom'
 
-const StyledLink = styled.a`
+const StyledLink = styled(RouterLink)`
   color: ${Style.colors.accent};
   text-decoration: none;
 
@@ -13,14 +14,13 @@ const StyledLink = styled.a`
 `
 
 var Link = ({ to, children }) => (
-  <StyledLink href={to}>
+  <StyledLink to={to}>
     {children}
   </StyledLink>
 )
 
 Link.propTypes = {
-  to: PropTypes.string,
-  style: PropTypes.object
+  to: PropTypes.string.isRequired
 }
 
 export default Link

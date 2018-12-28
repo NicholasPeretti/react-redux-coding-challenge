@@ -24,7 +24,7 @@ const NotFoundMessage = () => (
     <StyledSubTitle>
         Sorry, the page you are looking for does not exist.
     </StyledSubTitle>
-    <SubTitle>You can always go back to the <Link>homepage</Link>.</SubTitle>
+    <SubTitle>You can always go back to the <Link to="/">homepage</Link>.</SubTitle>
   </StyledContainer>
 )
 
