@@ -59,6 +59,8 @@ export const hasNext = state => {
   return page < totalPages
 }
 
+export const hasPrev = state => getPage(state) > 1
+
 export const defaultState = {
   cars: [],
   carsMap: new Map(),

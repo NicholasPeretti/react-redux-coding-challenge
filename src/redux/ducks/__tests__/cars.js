@@ -199,11 +199,30 @@ describe('Cars', () => {
         const hasNext = Cars.hasNext(globalState)
         expect(hasNext).toEqual(true)
       })
+
       test('Should return false when there is NOT a next page', () => {
         var globalState = getGlobalState()
         globalState.CARS.resultsCount = 0
         const hasNext = Cars.hasNext(globalState)
         expect(hasNext).toEqual(false)
+      })
+    })
+
+    describe('hasPrev', () => {
+      test('Should return true when there is a prev page', () => {
+        var globalState = getGlobalState()
+        globalState.CARS.resultsCount = 97
+        globalState.CARS.page = 2
+        const hasPrev = Cars.hasPrev(globalState)
+        expect(hasPrev).toEqual(true)
+      })
+
+      test('Should return false when there is NOT a prev page', () => {
+        var globalState = getGlobalState()
+        globalState.CARS.resultsCount = 97
+        globalState.CARS.page = 1
+        const hasPrev = Cars.hasPrev(globalState)
+        expect(hasPrev).toEqual(false)
       })
     })
   })
