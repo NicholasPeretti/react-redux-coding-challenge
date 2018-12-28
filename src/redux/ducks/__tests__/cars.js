@@ -171,15 +171,25 @@ describe('Cars', () => {
         expect(resultsCount).toEqual(Cars.defaultState.resultsCount)
       })
     })
+
+    describe('getTotalPages', () => {
+      test('Should return the pages count', () => {
+        const globalState = getGlobalState()
+        globalState.resultsCount = 97
+        const pagesCount = Cars.getTotalPages(globalState)
+        const { pageSize, resultsCount } = globalState
+        const expectedPagesCount =
+          parseInt(resultsCount / pageSize) + (resultsCount % pageSize) ? 1 : 0
+
+        expect(pagesCount).toEqual(expectedPagesCount)
+      })
+    })
   })
 
   describe('Reducer', () => {
     describe('setFetching', () => {
       test('Should set the `fetching` property to the value passed', () => {
-        const newState = Cars.default(
-          Cars.defaultState,
-          Cars.setFetching(true)
-        )
+        const newState = Cars.default(Cars.defaultState, Cars.setFetching(true))
         expect(newState.fetching).toBe(true)
       })
     })
@@ -209,10 +219,7 @@ describe('Cars', () => {
     describe('setPage', () => {
       test('Should set the `page` property to the value passed', () => {
         const page = 4
-        const newState = Cars.default(
-          Cars.defaultState,
-          Cars.setPage(page)
-        )
+        const newState = Cars.default(Cars.defaultState, Cars.setPage(page))
         expect(newState.page).toEqual(page)
       })
     })
@@ -231,10 +238,7 @@ describe('Cars', () => {
     describe('setError', () => {
       test('Should set the `error` property to the value passed', () => {
         const error = 'Error'
-        const newState = Cars.default(
-          Cars.defaultState,
-          Cars.setError(error)
-        )
+        const newState = Cars.default(Cars.defaultState, Cars.setError(error))
         expect(newState.error).toEqual(error)
       })
     })

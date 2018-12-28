@@ -7,7 +7,7 @@ export const SET_CARS = `${NAMESPACE} SET_CARS`
 export const SET_RESULTS_COUNT = `${NAMESPACE} SET_RESULTS_COUNT`
 export const SET_ERROR = `${NAMESPACE} SET_ERROR`
 
-export const setFetching = (fetching) => ({
+export const setFetching = fetching => ({
   type: SET_FETCHING,
   fetching: !!fetching
 })
@@ -27,34 +27,29 @@ export const setResultsCount = (resultsCount = 0) => ({
   resultsCount
 })
 
-export const setError = (error) => ({
+export const setError = error => ({
   type: SET_ERROR,
   error
 })
 
-export const getState = (state) => (
-  state[NAMESPACE]
-)
+export const getState = state => state[NAMESPACE]
 
-export const getCars = (state) => (
-  getState(state).cars
-)
+export const getCars = state => getState(state).cars
 
-export const getPage = (state) => (
-  getState(state).page
-)
+export const getPage = state => getState(state).page
 
-export const isFetching = (state) => (
-  getState(state).fetching
-)
+export const isFetching = state => getState(state).fetching
 
-export const getPageSize = (state) => (
-  getState(state).pageSize
-)
+export const getPageSize = state => getState(state).pageSize
 
-export const getResultsCount = (state) => (
-  getState(state).resultsCount
-)
+export const getResultsCount = state => getState(state).resultsCount
+
+export const getTotalPages = state => {
+  const resultsCount = getResultsCount(state)
+  const pageSize = getPageSize(state)
+
+  return parseInt(resultsCount / pageSize) + (resultsCount % pageSize) ? 1 : 0
+}
 
 export const defaultState = {
   cars: [],
