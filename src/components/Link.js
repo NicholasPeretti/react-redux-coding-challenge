@@ -1,16 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Style from '../style'
+import LinkStyle from '../utils/styledComponents/link-style'
 import styled from 'styled-components'
 import { Link as RouterLink } from 'react-router-dom'
 
 const StyledLink = styled(RouterLink)`
-  color: ${Style.colors.accent};
-  text-decoration: none;
-
-  &:hover: {
-    text-decoration: underline;
-  }
+  ${LinkStyle};
 `
 
 var Link = ({ to, children }) => (

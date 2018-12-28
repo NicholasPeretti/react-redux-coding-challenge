@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Link Should match snapshot 1`] = `"<a class=\\"sc-bdVaJa eBhWSy\\" href=\\"/page1\\">This is a Link</a>"`;
+exports[`Link Should match snapshot 1`] = `"<a class=\\"sc-bdVaJa enetwA\\" href=\\"/page1\\">This is a Link</a>"`;
