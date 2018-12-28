@@ -33,6 +33,10 @@ const MOCK_CARS = [
 describe('Cars', () => {
   DuckTest(Cars)
 
+  test('defaultState should match snapshot', () => {
+    expect(Cars.defaultState).toMatchSnapshot()
+  })
+
   describe('Actions creators', () => {
     describe('setFetching', () => {
       test('Should have the correct action type', () => {
@@ -126,7 +130,7 @@ describe('Cars', () => {
       test('Should have the correct action type', () => {
         const action = Cars.setMileageSort()
         expect(action.type).toEqual(Cars.SET_MILEAGE_SORT)
-  })
+      })
 
       test('Should have the correct value', () => {
         const sort = 1

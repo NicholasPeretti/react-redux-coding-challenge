@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cars defaultState should match snapshot 1`] = `
+Object {
+  "cars": Array [],
+  "carsMap": Immutable.Map {},
+  "error": null,
+  "fetching": false,
+  "mileageSort": null,
+  "page": 1,
+  "pageSize": 10,
+  "resultsCount": 0,
+}
+`;
