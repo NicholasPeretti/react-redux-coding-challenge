@@ -14,7 +14,7 @@ const AppContainer = styled.div`
   color: ${Style.colors.textColor};
 `
 const StyledMain = styled.main`
-  min-height: ${window.innerHeight - 165 - Style.spacing.padding3}px;
+  min-height: ${window.innerHeight - 165}px;
   margin-top: ${Style.spacing.padding3}
 `
 
