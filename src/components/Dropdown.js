@@ -107,7 +107,6 @@ class Dropdown extends React.Component {
 
   render() {
     const { items, style } = this.props
-    const arrowIcon = this.state.showList ? '&#9650;' : '&#9660;'
 
     return (
       <DropdownContainer style={style}>
@@ -138,7 +137,8 @@ class Dropdown extends React.Component {
 }
 
 Dropdown.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.string)
+  items: PropTypes.arrayOf(PropTypes.string),
+  onChange: PropTypes.func
 }
 
 export default Dropdown
