@@ -5,14 +5,17 @@ import Style from './style'
 import styled from 'styled-components'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import Container from './components/Container'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import PageNotFound from './screens/PageNotFound'
+import CarsSearch from './screens/CarsSearch'
 
 const AppContainer = styled.div`
   color: ${Style.colors.textColor};
 `
 const StyledMain = styled.main`
-  min-height: ${window.innerHeight - 165}px;
+  min-height: ${window.innerHeight - 165 - Style.spacing.padding3}px;
+  margin-top: ${Style.spacing.padding3}
 `
 
 const App = () => (
@@ -20,12 +23,14 @@ const App = () => (
     <AppContainer>
       <Navbar />
       <StyledMain>
-        <BrowserRouter>
-          <Switch>
-            <Route path='/' exact render={() => (<h1>Home</h1>)} />
-            <Route component={PageNotFound} />
-          </Switch>
-        </BrowserRouter>
+        <Container>
+          <BrowserRouter>
+            <Switch>
+              <Route path='/' exact component={CarsSearch} />
+              <Route component={PageNotFound} />
+            </Switch>
+          </BrowserRouter>
+        </Container>
       </StyledMain>
       <Footer />
     </AppContainer>
