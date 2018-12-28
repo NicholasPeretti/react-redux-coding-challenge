@@ -6,6 +6,7 @@ export const SET_PAGE = `${NAMESPACE} SET_PAGE`
 export const SET_CARS = `${NAMESPACE} SET_CARS`
 export const SET_RESULTS_COUNT = `${NAMESPACE} SET_RESULTS_COUNT`
 export const SET_ERROR = `${NAMESPACE} SET_ERROR`
+export const SET_MILEAGE_SORT = `${NAMESPACE} SET_MILEAGE_SORT`
 
 export const setFetching = fetching => ({
   type: SET_FETCHING,
@@ -30,6 +31,11 @@ export const setResultsCount = (resultsCount = 0) => ({
 export const setError = error => ({
   type: SET_ERROR,
   error
+})
+
+export const setMileageSort = sortValue => ({
+  type: SET_MILEAGE_SORT,
+  sort: sortValue
 })
 
 export const getState = state => state[NAMESPACE]
@@ -61,6 +67,8 @@ export const hasNext = state => {
 
 export const hasPrev = state => getPage(state) > 1
 
+export const getMileageSort = state => getState(state).mileageSort
+
 export const defaultState = {
   cars: [],
   carsMap: new Map(),
@@ -68,7 +76,8 @@ export const defaultState = {
   page: 1,
   resultsCount: 0,
   pageSize: 10,
-  error: null
+  error: null,
+  mileageSort: null
 }
 
 export default function reducer (state = defaultState, action = {}) {
@@ -111,6 +120,19 @@ export default function reducer (state = defaultState, action = {}) {
     case SET_ERROR: {
       state = Object.assign({}, state, {
         error: action.error
+      })
+      break
+    }
+
+    case SET_MILEAGE_SORT: {
+      let sort = action.sort
+
+      if (sort > 0) sort = 1
+      else if (sort < 0) sort = -1
+      else sort = null
+
+      state = Object.assign({}, state, {
+        mileageSort: action.sort
       })
       break
     }

@@ -121,6 +121,19 @@ describe('Cars', () => {
         expect(action.error).toEqual(error)
       })
     })
+
+    describe('setMileageSort', () => {
+      test('Should have the correct action type', () => {
+        const action = Cars.setMileageSort()
+        expect(action.type).toEqual(Cars.SET_MILEAGE_SORT)
+  })
+
+      test('Should have the correct value', () => {
+        const sort = 1
+        const action = Cars.setMileageSort(sort)
+        expect(action.sort).toEqual(sort)
+      })
+    })
   })
 
   describe('Selectors', () => {
@@ -223,6 +236,14 @@ describe('Cars', () => {
         globalState.CARS.page = 1
         const hasPrev = Cars.hasPrev(globalState)
         expect(hasPrev).toEqual(false)
+      })
+    })
+
+    describe('getMileageSort', () => {
+      test('Should return the mileage sort direction', () => {
+        const globalState = getGlobalState()
+        const mileageSort = Cars.getMileageSort(globalState)
+        expect(mileageSort).toEqual(Cars.defaultState.mileageSort)
       })
     })
   })
