@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import CarPropType from '../utils/propTypes/car'
 import styled from 'styled-components'
 import CarsList from './CarsList'
+import CarsListSortBox from './CarsListSortBox'
 import PaginationNav from './PaginationNav'
 import SubTitleBold from './SubTitleBold'
 import SubTitle from './SubTitle'
@@ -34,7 +35,9 @@ class CarsListPaginated extends React.Component {
       page,
       hasNext,
       hasPrev,
-      totalPages
+      totalPages,
+      setSort,
+      mileageSort
     } = this.props
 
     if (fetching) {
@@ -49,6 +52,12 @@ class CarsListPaginated extends React.Component {
             <SubTitle style={{ margin: `${Style.spacing.padding3} 0px` }}>
               Showing {cars.length} of {resultsCount} results
             </SubTitle>
+          </Column>
+          <Column style={{ width: '40%' }}>
+            <CarsListSortBox
+              setSort={setSort}
+              value={mileageSort}
+            />
           </Column>
         </Row>
         <CarsList cars={cars} />
@@ -72,7 +81,9 @@ CarsListPaginated.propTypes = {
   page: PropTypes.number.isRequired,
   totalPages: PropTypes.number.isRequired,
   hasNext: PropTypes.bool.isRequired,
-  hasPrev: PropTypes.bool.isRequired
+  hasPrev: PropTypes.bool.isRequired,
+  mileageSort: PropTypes.number,
+  setSort: PropTypes.func.isRequired
 }
 
 export default CarsListPaginated
