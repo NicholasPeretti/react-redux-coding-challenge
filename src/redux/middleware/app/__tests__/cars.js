@@ -2,6 +2,7 @@ import * as Cars from '../cars'
 import { isApiAction, apiSuccess, apiError } from '../../core/api'
 import { NAMESPACE, setFetching, setPage, setCars, setResultsCount, setError } from '../../../ducks/cars'
 import MiddlewareTest, { createMockStore } from '../../../../utils/tests/middleware'
+import { getGlobalState } from '../../../../utils/tests/reducer'
 const middleware = Cars.default
 var mockStore = null
 
@@ -29,7 +30,7 @@ describe('Cars', () => {
 
   describe('Middleware', () => {
     beforeEach(() => {
-      mockStore = createMockStore(middleware)
+      mockStore = createMockStore(middleware, getGlobalState())
     })
 
     describe('On fetchPage', () => {
