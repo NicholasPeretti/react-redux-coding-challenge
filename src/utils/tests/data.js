@@ -121,6 +121,17 @@ export const CarsList = [
   }
 ]
 
+export const Colors = [
+  'red',
+  'blue',
+  'green',
+  'black',
+  'yellow',
+  'white',
+  'silver'
+]
+
 export default {
-  CarsList
+  CarsList,
+  Colors
 }

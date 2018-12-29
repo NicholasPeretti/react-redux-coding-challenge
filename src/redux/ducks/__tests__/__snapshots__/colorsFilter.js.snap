@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Colors Filter Reducer setColors Should set colors and colorsMap 1`] = `
+Immutable.Map {
+  "red": "red",
+  "blue": "blue",
+  "green": "green",
+  "black": "black",
+  "yellow": "yellow",
+  "white": "white",
+  "silver": "silver",
+}
+`;
+
+exports[`Colors Filter defaultState should match snapshot 1`] = `
+Object {
+  "colors": Array [],
+  "colorsMap": Immutable.Map {},
+  "selectedColor": null,
+}
+`;
