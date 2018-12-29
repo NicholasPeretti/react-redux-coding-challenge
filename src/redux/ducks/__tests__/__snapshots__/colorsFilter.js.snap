@@ -17,6 +17,7 @@ Object {
   "colors": Array [],
   "colorsMap": Immutable.Map {},
   "error": null,
+  "fetching": false,
   "selectedColor": null,
 }
 `;

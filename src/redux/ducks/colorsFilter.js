@@ -4,6 +4,7 @@ export const NAMESPACE = 'COLOR_FILTER'
 export const SET_COLORS = `${NAMESPACE} SET_COLORS`
 export const SELECT_COLOR = `${NAMESPACE} SELECT_COLOR`
 export const SET_ERROR = `${NAMESPACE} SET_ERROR`
+export const SET_FETCHING = `${NAMESPACE} SET_FETCHING`
 
 export const setColors = colors => ({
   type: SET_COLORS,
@@ -20,11 +21,17 @@ export const setError = error => ({
   error
 })
 
+export const setFetching = fetching => ({
+  type: SET_FETCHING,
+  fetching
+})
+
 export const defaultState = {
   selectedColor: null,
   colors: [],
   colorsMap: new Map(),
-  error: null
+  error: null,
+  fetching: false
 }
 
 export default function reducer (state = defaultState, action = {}) {
@@ -53,6 +60,13 @@ export default function reducer (state = defaultState, action = {}) {
     case SET_ERROR: {
       state = Object.assign({}, state, {
         error: action.error
+      })
+      break
+    }
+
+    case SET_FETCHING: {
+      state = Object.assign({}, state, {
+        fetching: action.fetching
       })
       break
     }
