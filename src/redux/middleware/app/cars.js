@@ -32,6 +32,7 @@ export default function middleware (store) {
         dispatch(action)
         dispatch(setFetching(true))
         dispatch(setPage(action.payload.page))
+        dispatch(setError(null))
         break
       }
 
