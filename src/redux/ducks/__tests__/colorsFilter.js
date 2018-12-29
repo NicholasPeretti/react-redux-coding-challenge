@@ -34,6 +34,19 @@ describe('Colors Filter', () => {
         expect(action.color).toEqual(color)
       })
     })
+
+    describe('setError', () => {
+      test('Should have the correct type', () => {
+        const action = colorsFilter.setError()
+        expect(action.type).toEqual(colorsFilter.SET_ERROR)
+      })
+
+      test('Should have the correct value', () => {
+        const error = 'Error'
+        const action = colorsFilter.setError(error)
+        expect(action.error).toEqual(error)
+      })
+    })
   })
 
   describe('Reducer', () => {
@@ -58,6 +71,18 @@ describe('Colors Filter', () => {
         )
 
         expect(newState.selectedColor).toEqual(color)
+      })
+    })
+
+    describe('setError', () => {
+      test('Should set the `error` property', () => {
+        const error = 'Error'
+        const newState = colorsFilter.default(
+          colorsFilter.defaultState,
+          colorsFilter.setError(error)
+        )
+
+        expect(newState.error).toEqual(error)
       })
     })
   })

@@ -16,6 +16,7 @@ exports[`Colors Filter defaultState should match snapshot 1`] = `
 Object {
   "colors": Array [],
   "colorsMap": Immutable.Map {},
+  "error": null,
   "selectedColor": null,
 }
 `;
