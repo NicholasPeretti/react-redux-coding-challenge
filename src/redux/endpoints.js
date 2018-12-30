@@ -10,6 +10,11 @@ export const GET_COLORS = {
   method: 'GET'
 }
 
+export const GET_MANUFACTURERS = {
+  url: `${API_SERVER}/manufacturers`,
+  method: 'GET'
+}
+
 export default {
   GET_CARS,
   GET_COLORS
