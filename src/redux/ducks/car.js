@@ -36,21 +36,21 @@ export const defaultState = {
 export default function reducer (state = defaultState, action = {}) {
   switch (action.type) {
     case SET_CAR: {
-      state = Object.assign({}, {
+      state = Object.assign({}, state, {
         car: action.car
       })
       break
     }
 
     case SET_ERROR: {
-      state = Object.assign({}, {
+      state = Object.assign({}, state, {
         error: action.error
       })
       break
     }
 
     case SET_FETCHING: {
-      state = Object.assign({}, {
+      state = Object.assign({}, state, {
         fetching: action.fetching
       })
       break
