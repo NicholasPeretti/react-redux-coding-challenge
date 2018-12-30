@@ -1,5 +1,6 @@
 import DuckTest from '../../../utils/tests/duck'
 import * as colorsFilter from '../colorsFilter'
+import { getGlobalState } from '../../../utils/tests/reducer'
 import { Colors as MOCK_COLORS } from '../../../utils/tests/data'
 
 describe('Colors Filter', () => {
@@ -46,6 +47,40 @@ describe('Colors Filter', () => {
         const action = colorsFilter.setError(error)
         expect(action.error).toEqual(error)
       })
+    })
+  })
+
+  describe('Selectors', () => {
+    describe('getState', () => {
+      test('Should return the default state', () => {
+        const globalState = getGlobalState()
+        const state = colorsFilter.getState(globalState)
+        expect(state).toEqual(colorsFilter.defaultState)
+      })
+    })
+
+    describe('isFetching', () => {
+      const globalState = getGlobalState()
+      const state = colorsFilter.isFetching(globalState)
+      expect(state).toEqual(colorsFilter.defaultState.fetching)
+    })
+
+    describe('getError', () => {
+      const globalState = getGlobalState()
+      const state = colorsFilter.getError(globalState)
+      expect(state).toEqual(colorsFilter.defaultState.error)
+    })
+
+    describe('getColors', () => {
+      const globalState = getGlobalState()
+      const state = colorsFilter.getColors(globalState)
+      expect(state).toEqual(colorsFilter.defaultState.colors)
+    })
+
+    describe('getSelectedColor', () => {
+      const globalState = getGlobalState()
+      const state = colorsFilter.getSelectedColor(globalState)
+      expect(state).toEqual(colorsFilter.defaultState.selectedColor)
     })
   })
 

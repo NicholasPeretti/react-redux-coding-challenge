@@ -24,6 +24,16 @@ export const setFetching = fetching => ({
   fetching
 })
 
+export const getState = state => state[NAMESPACE]
+
+export const isFetching = state => getState(state).fetching
+
+export const getError = state => getState(state).error
+
+export const getColors = state => getState(state).colors
+
+export const getSelectedColor = state => getState(state).selectedColor
+
 export const defaultState = {
   selectedColor: null,
   colors: [],
