@@ -6,16 +6,29 @@ import {
   API_REQUEST
 } from '../core/api'
 import { GET_COLORS } from '../../endpoints'
-import { NAMESPACE, setColors, setError, setFetching } from '../../ducks/colorsFilter'
+import { NAMESPACE, setColors, setError, setFetching, getSelectedColor, SELECT_COLOR } from '../../ducks/colorsFilter'
+import { NAMESPACE as CARS_NAMESPACE } from '../../ducks/cars'
+import { fetchPage } from '../app/cars'
 
 export const fetchColors = () => {
   const { url, method } = GET_COLORS
   return apiRequest(url, method, NAMESPACE)
 }
 
-export default function middleware () {
+export default function middleware (store) {
   return dispatch => action => {
+    if (isApiAction(action, CARS_NAMESPACE) && action.type === API_REQUEST) {
+      const selectedColor = getSelectedColor(store.getState())
+
+      if (selectedColor) {
+        action.payload.color = selectedColor
+      }
+    }
     dispatch(action)
+
+    if (action.type === SELECT_COLOR) {
+      store.dispatch(fetchPage(1))
+    }
 
     handleApiMiddlewareActions(dispatch, action)
   }
