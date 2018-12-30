@@ -63,6 +63,9 @@ export const hasPrev = state => getPage(state) > 1
 
 export const getMileageSort = state => getState(state).mileageSort
 
+export const getCar = (state, stockNumber) =>
+  getState(state).carsMap.get(stockNumber)
+
 export const defaultState = {
   cars: [],
   carsMap: new Map(),

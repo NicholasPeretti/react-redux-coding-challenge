@@ -250,6 +250,19 @@ describe('Cars', () => {
         expect(mileageSort).toEqual(Cars.defaultState.mileageSort)
       })
     })
+
+    describe('getCar', () => {
+      test('Should return the car by stockNumber', () => {
+        const stockNumber = MOCK_CARS[0].stockNumber
+        const state = Cars.default(null, Cars.setCars(MOCK_CARS))
+        const globalState = Object.assign({}, getGlobalState(), {
+          CARS: state
+        })
+        const car = Cars.getCar(globalState, stockNumber)
+        expect(car.stockNumber).toEqual(stockNumber)
+        expect(car).toEqual(MOCK_CARS[0])
+      })
+    })
   })
 
   describe('Reducer', () => {
