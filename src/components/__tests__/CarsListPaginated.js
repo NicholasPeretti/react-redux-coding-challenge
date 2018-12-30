@@ -19,7 +19,8 @@ const props = {
   hasNext: false,
   hasPrev: false,
   page: 1,
-  totalPages: 1
+  totalPages: 1,
+  setSort: jest.fn()
 }
 
 describe('CarsListPaginated', () => {
