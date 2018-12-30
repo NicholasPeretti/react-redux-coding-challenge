@@ -51,14 +51,13 @@ describe('Colors Filter', () => {
 
   describe('Reducer', () => {
     describe('setColors', () => {
-      test('Should set colors and colorsMap', () => {
+      test('Should set colors', () => {
         const newState = colorsFilter.default(
           colorsFilter.defaultState,
           colorsFilter.setColors(MOCK_COLORS)
         )
 
         expect(newState.colors).toEqual(MOCK_COLORS)
-        expect(newState.colorsMap).toMatchSnapshot()
       })
     })
 

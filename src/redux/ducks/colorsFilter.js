@@ -1,5 +1,3 @@
-import { Map } from 'immutable'
-
 export const NAMESPACE = 'COLOR_FILTER'
 export const SET_COLORS = `${NAMESPACE} SET_COLORS`
 export const SELECT_COLOR = `${NAMESPACE} SELECT_COLOR`
@@ -29,7 +27,6 @@ export const setFetching = fetching => ({
 export const defaultState = {
   selectedColor: null,
   colors: [],
-  colorsMap: new Map(),
   error: null,
   fetching: false
 }
@@ -37,16 +34,8 @@ export const defaultState = {
 export default function reducer (state = defaultState, action = {}) {
   switch (action.type) {
     case SET_COLORS: {
-      state.colorsMap = new Map()
-      action.colors.forEach(color => {
-        state.colorsMap = state.colorsMap.set(
-          color, color
-        )
-      })
-
-      state = Object.assign({}, state, {
-        colors: state.colorsMap.reduce((colors, v) => colors.concat([v]), [])
-      })
+      const { colors } = action
+      state = Object.assign({}, state, { colors })
       break
     }
 
