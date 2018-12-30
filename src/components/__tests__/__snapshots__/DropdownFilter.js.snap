@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownFilter Should match snapshot 1`] = `"<div class=\\"sc-bZQynM AMncx\\"><span class=\\"sc-bdVaJa sc-gzVnrw hlocEI\\">Test label</span><div class=\\"sc-bwzfXH gYNwqV\\"><button class=\\"sc-htpNat kYidVU\\"><span class=\\"sc-bdVaJa bkmfbd\\">a</span><span class=\\"sc-bxivhb kAOnLj\\"><span>▼</span></span></button></div></div>"`;
