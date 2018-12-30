@@ -18,6 +18,12 @@ const ButtonContainer = styled.div`
   margin-top: ${Style.spacing.padding3};
 `
 
+const Space = styled.div`
+  display: flex;
+  height: ${Style.spacing.padding2};
+  width: 100%;
+`
+
 class CarsListFiltersBox extends React.Component {
   constructor () {
     super()
@@ -43,6 +49,7 @@ class CarsListFiltersBox extends React.Component {
     return (
       <Column>
         <ColorsFilter onChange={this.setColorFilter.bind(this)} />
+        <Space />
         <ManufacturersFilter onChange={this.setManufacturerFilter.bind(this)} />
         <ButtonContainer>
           <FilterButton filters={this.state}>Filter</FilterButton>
