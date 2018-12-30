@@ -24,6 +24,16 @@ export const setFetching = fetching => ({
   fetching
 })
 
+export const getState = state => state[NAMESPACE]
+
+export const getManufacturers = state => getState(state).manufacturers
+
+export const getSelectedManufacturer = state => getState(state).selectedManufacturer
+
+export const isFetching = state => getState(state).fetching
+
+export const getError = state => getState(state).error
+
 export const defaultState = {
   fetching: false,
   error: null,

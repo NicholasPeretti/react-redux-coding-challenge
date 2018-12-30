@@ -1,5 +1,6 @@
 import DuckTest from '../../../utils/tests/duck'
 import * as manufacturersFilter from '../manufacturersFilter'
+import { getGlobalState } from '../../../utils/tests/reducer'
 import { Manufacturers as MOCK_MANUFACTURERS } from '../../../utils/tests/data'
 
 describe('ManufacturersFilter', () => {
@@ -59,6 +60,40 @@ describe('ManufacturersFilter', () => {
         const action = manufacturersFilter.setFetching(true)
         expect(action.fetching).toEqual(true)
       })
+    })
+  })
+
+  describe('Selectors', () => {
+    describe('getState', () => {
+      test('Should return the default state', () => {
+        const globalState = getGlobalState()
+        const state = manufacturersFilter.getState(globalState)
+        expect(state).toEqual(manufacturersFilter.defaultState)
+      })
+    })
+
+    describe('getManufacturers', () => {
+      const globalState = getGlobalState()
+      const state = manufacturersFilter.getManufacturers(globalState)
+      expect(state).toEqual(manufacturersFilter.defaultState.manufacturers)
+    })
+
+    describe('getSelectedManufacturer', () => {
+      const globalState = getGlobalState()
+      const state = manufacturersFilter.getSelectedManufacturer(globalState)
+      expect(state).toEqual(manufacturersFilter.defaultState.selectedManufacturer)
+    })
+
+    describe('isFetching', () => {
+      const globalState = getGlobalState()
+      const state = manufacturersFilter.isFetching(globalState)
+      expect(state).toEqual(manufacturersFilter.defaultState.fetching)
+    })
+
+    describe('getError', () => {
+      const globalState = getGlobalState()
+      const state = manufacturersFilter.getError(globalState)
+      expect(state).toEqual(manufacturersFilter.defaultState.error)
     })
   })
 
