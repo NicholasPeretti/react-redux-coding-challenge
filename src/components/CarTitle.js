@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import SubTitleBold from './SubTitleBold'
 
 var CarTitle = ({ manufacturerName, modelName }) => (
-  <SubTitleBold>
+  <React.Fragment>
     {manufacturerName} {modelName}
-  </SubTitleBold>
+  </React.Fragment>
 )
 
 CarTitle.propTypes = {

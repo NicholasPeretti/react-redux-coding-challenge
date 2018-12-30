@@ -4,6 +4,7 @@ import CarTitle from './CarTitle'
 import CarShortDescription from './CarShortDescription'
 import Text from './Text'
 import Link from './Link'
+import SubTitleBold from './SubTitleBold'
 
 import Style from '../style'
 import styled from 'styled-components'
@@ -17,10 +18,9 @@ const StyledSection = styled.section`
 
 var CarsListItemDescription = ({ car }) => (
   <StyledSection>
-    <CarTitle
-      manufacturerName={car.manufacturerName}
-      modelName={car.modelName}
-    />
+    <SubTitleBold>
+      <CarTitle {...car}/>
+    </SubTitleBold>
     <Text>
       <CarShortDescription {...car} />
     </Text>
