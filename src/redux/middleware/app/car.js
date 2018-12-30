@@ -1,25 +1,39 @@
 import { apiRequest, isApiAction, API_REQUEST, API_SUCCESS, API_ERROR } from '../core/api'
 import { GET_CARS } from '../../endpoints'
 import { NAMESPACE, setFetching, setError, setCar } from '../../ducks/car'
+import { getCar as getCarFromCarsStore } from '../../ducks/cars'
 
 export const fetchCar = stockNumber => {
   const { url, method } = GET_CARS
   return apiRequest(`${url}/${stockNumber}`, method, NAMESPACE)
 }
 
-export default function middleware () {
+export default function middleware (store) {
   return dispatch => action => {
-    dispatch(action)
+    if (!isApiAction(action, NAMESPACE)) {
+      dispatch(action)
+      return
+    }
 
-    if (!isApiAction(action, NAMESPACE)) return
+    if (isApiAction(action, NAMESPACE) && action.type === API_REQUEST) {
+      let stockNumber = getStockNumberFromAction(action)
+      let car = getCarFromCarsStore(
+        store.getState(),
+        stockNumber
+      )
 
-    switch (action.type) {
-      case API_REQUEST: {
-        dispatch(setFetching(true))
-        dispatch(setError(null))
-        break
+      if (car) {
+        action = { type: 'ABORT FETCH - DATA ALREADY STORED' }
+        dispatch(action)
+        dispatch(setCar(car))
+        return
       }
 
+      dispatch(setFetching(true))
+      dispatch(setError(null))
+    }
+
+    switch (action.type) {
       case API_SUCCESS: {
         dispatch(setFetching(false))
         dispatch(setCar(action.payload.car))
@@ -33,4 +47,10 @@ export default function middleware () {
       }
     }
   }
+}
+
+function getStockNumberFromAction (action) {
+  let url = action.meta.url
+  let urlParts = url.split('/')
+  return parseInt(urlParts[urlParts.length - 1])
 }
