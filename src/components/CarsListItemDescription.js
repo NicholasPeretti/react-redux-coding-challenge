@@ -21,7 +21,9 @@ var CarsListItemDescription = ({ car }) => (
       manufacturerName={car.manufacturerName}
       modelName={car.modelName}
     />
-    <CarShortDescription {...car} />
+    <Text>
+      <CarShortDescription {...car} />
+    </Text>
     <Text>
       <Link to={`/${car.stockNumber}`}>View details</Link>
     </Text>
