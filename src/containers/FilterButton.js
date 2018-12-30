@@ -1,10 +1,12 @@
 import { connect } from 'react-redux'
 import Button from '../components/Button'
 import { selectManufacturer } from '../redux/ducks/manufacturersFilter'
+import { selectColor } from '../redux/ducks/colorsFilter'
 
 const mapDispatchToProps = dispatch => ({
-  onClick: ({ manufacturerFilter }) => {
+  onClick: ({ manufacturerFilter, colorFilter }) => {
     dispatch(selectManufacturer(manufacturerFilter))
+    dispatch(selectColor(colorFilter))
   }
 })
 

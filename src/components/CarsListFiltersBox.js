@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Style from '../style'
 import ManufacturersFilter from '../containers/ManufacturersFilter'
+import ColorsFilter from '../containers/ColorsFilter'
 import FilterButton from '../containers/FilterButton'
 
 const Column = styled.div`
@@ -21,7 +22,8 @@ class CarsListFiltersBox extends React.Component {
   constructor () {
     super()
     this.state = {
-      manufacturerFilter: null
+      manufacturerFilter: null,
+      colorFilter: null
     }
   }
 
@@ -31,9 +33,16 @@ class CarsListFiltersBox extends React.Component {
     })
   }
 
+  setColorFilter (colorFilter) {
+    this.setState({
+      colorFilter
+    })
+  }
+
   render () {
     return (
       <Column>
+        <ColorsFilter onChange={this.setColorFilter.bind(this)} />
         <ManufacturersFilter onChange={this.setManufacturerFilter.bind(this)} />
         <ButtonContainer>
           <FilterButton filters={this.state}>Filter</FilterButton>
