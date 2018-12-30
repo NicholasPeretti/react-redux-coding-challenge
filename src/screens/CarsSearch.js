@@ -27,7 +27,7 @@ const Column = styled.div`
 const FiltersBox = styled.div`
   border: 2px solid ${Style.colors.gray};
   padding: ${Style.spacing.padding3};
-  margin: 0px ${Style.spacing.padding3};
+  margin: 0px ${Style.spacing.padding3} 0px 0px;
 `
 
 const CarsSearch = () => (
