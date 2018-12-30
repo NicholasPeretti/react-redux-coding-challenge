@@ -4,6 +4,7 @@ import { getGlobalState } from '../../../../utils/tests/reducer'
 import { NAMESPACE, setFetching, setError, setManufacturers } from '../../../ducks/manufacturersFilter'
 import { isApiAction, apiSuccess, apiError } from '../../core/api'
 import { Manufacturers as MOCK_MANUFACTURERS } from '../../../../utils/tests/data'
+import { fetchPage } from '../cars'
 const middleware = manufacturersFilter.default
 var mockStore = null
 
@@ -99,6 +100,23 @@ describe('manufacturersFilter', () => {
         invoke(action)
         expect(next).toHaveBeenCalled()
         expect(next).toHaveBeenCalledWith(setErrorAction)
+      })
+    })
+
+    describe('On Cars.fetchPage', () => {
+      test('Should fill the `manufacturer` param of the request', () => {
+        const manufacturer = MOCK_MANUFACTURERS[0].name
+        var globalState = Object.assign({}, getGlobalState())
+        globalState[NAMESPACE].selectedManufacturer = manufacturer
+
+        const { next, invoke } = createMockStore(middleware, globalState)
+        const action = fetchPage(1)
+        var expectedAction = fetchPage(1)
+        expectedAction.payload.manufacturer = manufacturer
+
+        invoke(action)
+        expect(next).toHaveBeenCalled()
+        expect(next).toHaveBeenCalledWith(expectedAction)
       })
     })
   })

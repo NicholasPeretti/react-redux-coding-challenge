@@ -1,4 +1,5 @@
-import { setFetching, setError, setManufacturers, NAMESPACE } from '../../ducks/manufacturersFilter'
+import { setFetching, setError, setManufacturers, NAMESPACE, getSelectedManufacturer } from '../../ducks/manufacturersFilter'
+import { NAMESPACE as CARS_NAMESPACE } from '../../ducks/cars'
 import { isApiAction, API_ERROR, API_REQUEST, API_SUCCESS, apiRequest } from '../core/api'
 import { GET_MANUFACTURERS } from '../../endpoints'
 
@@ -7,8 +8,16 @@ export const fetchManufacturers = () => {
   return apiRequest(url, method, NAMESPACE)
 }
 
-export default function middleware () {
+export default function middleware (store) {
   return dispatch => action => {
+    if (isApiAction(action, CARS_NAMESPACE) && action.type === API_REQUEST) {
+      const selectedManufacturer = getSelectedManufacturer(store.getState())
+
+      if (selectedManufacturer) {
+        action.payload.manufacturer = selectedManufacturer
+      }
+    }
+
     dispatch(action)
 
     handleApiMiddlewareActions(dispatch, action)
