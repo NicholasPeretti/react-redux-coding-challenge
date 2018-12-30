@@ -14,16 +14,31 @@ const Label = styled(Text)`
   margin-bottom: ${Style.spacing.padding1};
 `
 
-var DropdownFilter = ({ label, value, items, onChange }) => (
-  <FilterContainer>
-    <Label>{label}</Label>
-    <Dropdown
-      value={value}
-      items={items}
-      onChange={onChange}
-    />
-  </FilterContainer>
-)
+class DropdownFilter extends React.Component {
+  constructor (props) {
+    super(props)
+
+    const { initialFetch } = props
+    if (initialFetch) {
+      initialFetch()
+    }
+  }
+
+  render () {
+    const { label, value, items, onChange } = this.props
+
+    return (
+      <FilterContainer>
+        <Label>{label}</Label>
+        <Dropdown
+          value={value}
+          items={items}
+          onChange={onChange}
+        />
+      </FilterContainer>
+    )
+  }
+}
 
 DropdownFilter.propTypes = {
   label: PropTypes.string.isRequired,
@@ -31,7 +46,8 @@ DropdownFilter.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.string
   ),
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  initialFetch: PropTypes.func
 }
 
 export default DropdownFilter

@@ -26,4 +26,14 @@ describe('DropdownFilter', () => {
 
     expect(onChange).toHaveBeenCalled()
   })
+
+  test('Should call initialFetch if passed as prop', () => {
+    const initialFetch = jest.fn()
+    const wrapper = mount(<DropdownFilter {...props} initialFetch={initialFetch}/>)
+
+    wrapper.find('button').simulate('click')
+    wrapper.find('li').last().simulate('click')
+
+    expect(initialFetch).toHaveBeenCalled()
+  })
 })
