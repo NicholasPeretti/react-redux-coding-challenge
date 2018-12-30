@@ -95,21 +95,21 @@ describe('Cars', () => {
       })
     })
 
-    describe('setResultsCount', () => {
+    describe('setTotalPageCount', () => {
       test('Should have the correct action type', () => {
-        const action = Cars.setResultsCount()
-        expect(action.type).toEqual(Cars.SET_RESULTS_COUNT)
+        const action = Cars.setTotalPageCount()
+        expect(action.type).toEqual(Cars.SET_TOTAL_PAGE_COUNT)
       })
 
       test('Should have the correct value', () => {
-        const resultsCount = 6
-        const action = Cars.setResultsCount(resultsCount)
-        expect(action.resultsCount).toEqual(resultsCount)
+        const pageCount = 6
+        const action = Cars.setTotalPageCount(pageCount)
+        expect(action.totalPageCount).toEqual(pageCount)
       })
 
-      test('Should set 0 as default', () => {
-        const action = Cars.setResultsCount()
-        expect(action.resultsCount).toEqual(0)
+      test('Should set 1 as default', () => {
+        const action = Cars.setTotalPageCount()
+        expect(action.totalPageCount).toEqual(1)
       })
     })
 
@@ -212,14 +212,14 @@ describe('Cars', () => {
     describe('hasNext', () => {
       test('Should return true when there is a next page', () => {
         var globalState = getGlobalState()
-        globalState.CARS.resultsCount = 97
+        globalState.CARS.totalPageCount = 97
         const hasNext = Cars.hasNext(globalState)
         expect(hasNext).toEqual(true)
       })
 
       test('Should return false when there is NOT a next page', () => {
         var globalState = getGlobalState()
-        globalState.CARS.resultsCount = 0
+        globalState.CARS.totalPageCount = 1
         const hasNext = Cars.hasNext(globalState)
         expect(hasNext).toEqual(false)
       })
@@ -228,7 +228,7 @@ describe('Cars', () => {
     describe('hasPrev', () => {
       test('Should return true when there is a prev page', () => {
         var globalState = getGlobalState()
-        globalState.CARS.resultsCount = 97
+        globalState.CARS.totalPageCount = 97
         globalState.CARS.page = 2
         const hasPrev = Cars.hasPrev(globalState)
         expect(hasPrev).toEqual(true)
@@ -236,7 +236,7 @@ describe('Cars', () => {
 
       test('Should return false when there is NOT a prev page', () => {
         var globalState = getGlobalState()
-        globalState.CARS.resultsCount = 97
+        globalState.CARS.totalPageCount = 97
         globalState.CARS.page = 1
         const hasPrev = Cars.hasPrev(globalState)
         expect(hasPrev).toEqual(false)
@@ -290,14 +290,14 @@ describe('Cars', () => {
       })
     })
 
-    describe('setResultsCount', () => {
-      test('Should set the `resultsCount` property to the value passed', () => {
-        const resultsCount = 4
+    describe('setTotalPageCount', () => {
+      test('Should set the `totalPageCount` property to the value passed', () => {
+        const pageCount = 4
         const newState = Cars.default(
           Cars.defaultState,
-          Cars.setResultsCount(resultsCount)
+          Cars.setTotalPageCount(pageCount)
         )
-        expect(newState.resultsCount).toEqual(resultsCount)
+        expect(newState.totalPageCount).toEqual(pageCount)
       })
     })
 

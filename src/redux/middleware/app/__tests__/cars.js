@@ -1,6 +1,6 @@
 import * as Cars from '../cars'
 import { isApiAction, apiSuccess, apiError } from '../../core/api'
-import { NAMESPACE, setFetching, setPage, setCars, setResultsCount, setError } from '../../../ducks/cars'
+import { NAMESPACE, setFetching, setPage, setCars, setTotalPageCount, setError } from '../../../ducks/cars'
 import MiddlewareTest, { createMockStore } from '../../../../utils/tests/middleware'
 import { getGlobalState } from '../../../../utils/tests/reducer'
 const middleware = Cars.default
@@ -78,15 +78,15 @@ describe('Cars', () => {
         expect(next).toHaveBeenCalledWith(setCarsAction)
       })
 
-      test('Should dispatch setResultsCount()', () => {
+      test('Should dispatch setTotalPageCount()', () => {
         const { next, invoke } = mockStore
-        const resultsCount = 4
-        const action = apiSuccess({ totalPageCount: resultsCount }, NAMESPACE)
-        const setResultsCountAction = setResultsCount(resultsCount)
+        const pageCount = 4
+        const action = apiSuccess({ totalPageCount: pageCount }, NAMESPACE)
+        const setTotalPageCountAction = setTotalPageCount(pageCount)
 
         invoke(action)
         expect(next).toHaveBeenCalled()
-        expect(next).toHaveBeenCalledWith(setResultsCountAction)
+        expect(next).toHaveBeenCalledWith(setTotalPageCountAction)
       })
     })
 

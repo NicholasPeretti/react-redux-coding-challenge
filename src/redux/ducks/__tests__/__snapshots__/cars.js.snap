@@ -9,6 +9,6 @@ Object {
   "mileageSort": null,
   "page": 1,
   "pageSize": 10,
-  "resultsCount": 0,
+  "totalPageCount": 1,
 }
 `;

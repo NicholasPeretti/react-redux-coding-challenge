@@ -1,5 +1,5 @@
 import { isApiAction, API_REQUEST, API_SUCCESS, API_ERROR, apiRequest } from '../core/api'
-import { NAMESPACE, SET_MILEAGE_SORT, setFetching, setCars, setResultsCount, setError, setPage, getMileageSort } from '../../ducks/cars'
+import { NAMESPACE, SET_MILEAGE_SORT, setFetching, setCars, setTotalPageCount, setError, setPage, getMileageSort } from '../../ducks/cars'
 import { GET_CARS } from '../../endpoints'
 
 export const fetchPage = (page = 1) => {
@@ -39,7 +39,7 @@ export default function middleware (store) {
       case API_SUCCESS: {
         dispatch(setFetching(false))
         dispatch(setCars(action.payload.cars))
-        dispatch(setResultsCount(action.payload.totalPageCount))
+        dispatch(setTotalPageCount(action.payload.totalPageCount))
         break
       }
 

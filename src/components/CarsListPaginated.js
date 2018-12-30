@@ -30,7 +30,6 @@ class CarsListPaginated extends React.Component {
     const {
       cars,
       fetching,
-      resultsCount,
       fetchPage,
       page,
       hasNext,
@@ -50,7 +49,7 @@ class CarsListPaginated extends React.Component {
           <Column>
             <SubTitleBold>Available cars</SubTitleBold>
             <SubTitle style={{ margin: `${Style.spacing.padding3} 0px` }}>
-              Showing {cars.length} of {resultsCount} results
+              Showing 1 of {totalPages} page{totalPages > 1 && 's'}
             </SubTitle>
           </Column>
           <Column style={{ width: '40%' }}>
@@ -75,7 +74,6 @@ class CarsListPaginated extends React.Component {
 
 CarsListPaginated.propTypes = {
   cars: PropTypes.arrayOf(CarPropType).isRequired,
-  resultsCount: PropTypes.number.isRequired,
   fetchPage: PropTypes.func.isRequired,
   fetching: PropTypes.bool.isRequired,
   page: PropTypes.number.isRequired,

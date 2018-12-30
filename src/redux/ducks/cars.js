@@ -4,7 +4,7 @@ export const NAMESPACE = 'CARS'
 export const SET_FETCHING = `${NAMESPACE} SET_FETCHING`
 export const SET_PAGE = `${NAMESPACE} SET_PAGE`
 export const SET_CARS = `${NAMESPACE} SET_CARS`
-export const SET_RESULTS_COUNT = `${NAMESPACE} SET_RESULTS_COUNT`
+export const SET_TOTAL_PAGE_COUNT = `${NAMESPACE} SET_TOTAL_PAGE_COUNT`
 export const SET_ERROR = `${NAMESPACE} SET_ERROR`
 export const SET_MILEAGE_SORT = `${NAMESPACE} SET_MILEAGE_SORT`
 
@@ -23,9 +23,9 @@ export const setCars = (cars = []) => ({
   cars
 })
 
-export const setResultsCount = (resultsCount = 0) => ({
-  type: SET_RESULTS_COUNT,
-  resultsCount
+export const setTotalPageCount = (totalPageCount = 1) => ({
+  type: SET_TOTAL_PAGE_COUNT,
+  totalPageCount
 })
 
 export const setError = error => ({
@@ -50,13 +50,7 @@ export const getPageSize = state => getState(state).pageSize
 
 export const getResultsCount = state => getState(state).resultsCount
 
-export const getTotalPages = state => {
-  const resultsCount = getResultsCount(state)
-  const pageSize = getPageSize(state)
-  const pagesCount = parseInt(resultsCount / pageSize) + ((resultsCount % pageSize) ? 1 : 0)
-
-  return pagesCount || 1
-}
+export const getTotalPages = state => getState(state).totalPageCount
 
 export const hasNext = state => {
   const page = getPage(state)
@@ -74,7 +68,7 @@ export const defaultState = {
   carsMap: new Map(),
   fetching: false,
   page: 1,
-  resultsCount: 0,
+  totalPageCount: 1,
   pageSize: 10,
   error: null,
   mileageSort: null
@@ -110,9 +104,9 @@ export default function reducer (state = defaultState, action = {}) {
       break
     }
 
-    case SET_RESULTS_COUNT: {
+    case SET_TOTAL_PAGE_COUNT: {
       state = Object.assign({}, state, {
-        resultsCount: action.resultsCount
+        totalPageCount: action.totalPageCount
       })
       break
     }
