@@ -39,16 +39,16 @@ describe('colorsFilter', () => {
         expect(next).toHaveBeenCalled()
         expect(next).toHaveBeenCalledWith(setFetchingAction)
       })
-    })
 
-    test('Should dispatch setError(null)', () => {
-      const { next, invoke } = mockStore
-      const action = colorsFilter.fetchColors()
-      const setFetchingAction = setError(null)
+      test('Should dispatch setError(null)', () => {
+        const { next, invoke } = mockStore
+        const action = colorsFilter.fetchColors()
+        const setErrorAction = setError(null)
 
-      invoke(action)
-      expect(next).toHaveBeenCalled()
-      expect(next).toHaveBeenCalledWith(setFetchingAction)
+        invoke(action)
+        expect(next).toHaveBeenCalled()
+        expect(next).toHaveBeenCalledWith(setErrorAction)
+      })
     })
   })
 
@@ -90,11 +90,11 @@ describe('colorsFilter', () => {
       const error = 'Error'
       const { next, invoke } = mockStore
       const action = apiError(error, NAMESPACE)
-      const setFetchingAction = setError(error)
+      const setErrorAction = setError(error)
 
       invoke(action)
       expect(next).toHaveBeenCalled()
-      expect(next).toHaveBeenCalledWith(setFetchingAction)
+      expect(next).toHaveBeenCalledWith(setErrorAction)
     })
   })
 })
