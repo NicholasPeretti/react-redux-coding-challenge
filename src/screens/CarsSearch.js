@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Style from '../style'
 import CarsListPaginated from '../containers/CarsListPaginated'
 import CarsListFiltersBox from '../components/CarsListFiltersBox'
+import BorderedBox from '../components/BorderedBox'
 
 const Row = styled.div`
   display: flex;
@@ -24,9 +25,7 @@ const Column = styled.div`
   flex-direction: column;
 `
 
-const FiltersBox = styled.div`
-  border: 2px solid ${Style.colors.gray};
-  padding: ${Style.spacing.padding3};
+const FiltersBox = styled(BorderedBox)`
   margin: 0px ${Style.spacing.padding3} 0px 0px;
 `
 
