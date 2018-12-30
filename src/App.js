@@ -9,6 +9,7 @@ import Container from './components/Container'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import PageNotFound from './screens/PageNotFound'
 import CarsSearch from './screens/CarsSearch'
+import CarDetails from './screens/CarDetails'
 
 const AppContainer = styled.div`
   color: ${Style.colors.textColor};
@@ -27,6 +28,7 @@ const App = () => (
           <BrowserRouter>
             <Switch>
               <Route path='/' exact component={CarsSearch} />
+              <Route path='/:stockNumber' exact component={CarDetails} />
               <Route component={PageNotFound} />
             </Switch>
           </BrowserRouter>
