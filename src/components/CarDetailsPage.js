@@ -103,7 +103,7 @@ const CarDetailsPage = ({
 )
 
 CarDetailsPage.propTypes = {
-  car: CarPropType.isRequired,
+  car: CarPropType,
   saveCar: PropTypes.func.isRequired,
   unsaveCar: PropTypes.func.isRequired,
   isCarSaved: PropTypes.bool.isRequired,
