@@ -39,6 +39,7 @@ export const isFetching = state => getState(state).fetching
 
 export const isCarSaved = state => {
   let car = getCar(state)
+  if (!car) return false
   return !!window.localStorage.getItem(car.stockNumber)
 }
 
@@ -68,6 +69,12 @@ export default function reducer (state = defaultState, action = {}) {
       state = Object.assign({}, state, {
         fetching: action.fetching
       })
+      break
+    }
+
+    case SAVE_CAR:
+    case UNSAVE_CAR: {
+      state = Object.assign({}, state)
       break
     }
   }
