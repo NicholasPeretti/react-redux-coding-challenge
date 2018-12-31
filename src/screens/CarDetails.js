@@ -19,11 +19,9 @@ class CarDetailsPage extends React.Component {
   render () {
     const { car, fetching, error, unsaveCar, saveCar, isCarSaved } = this.props
 
-    if (fetching) return 'Loading'
-
     if (error && !car) return <ServerError />
 
-    if (!car) return <PageNotFound />
+    if (!fetching && !car) return <PageNotFound />
 
     return (
       <CarDetails
@@ -31,6 +29,7 @@ class CarDetailsPage extends React.Component {
         isCarSaved={isCarSaved}
         saveCar={saveCar}
         unsaveCar={unsaveCar}
+        fetching={fetching}
       />
     )
   }
