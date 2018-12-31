@@ -6,7 +6,7 @@ import PageNotFound from './PageNotFound'
 import ServerError from './ServerError'
 import { connect } from 'react-redux'
 import { fetchCar } from '../redux/middleware/app/car'
-import { getCar, isFetching, getError } from '../redux/ducks/car'
+import { getCar, isFetching, getError, saveCar, unsaveCar, isCarSaved } from '../redux/ducks/car'
 
 class CarDetailsPage extends React.Component {
   componentDidMount () {
@@ -17,7 +17,7 @@ class CarDetailsPage extends React.Component {
   }
 
   render () {
-    const { car, fetching, error } = this.props
+    const { car, fetching, error, unsaveCar, saveCar, isCarSaved } = this.props
 
     if (fetching) return 'Loading'
 
@@ -28,9 +28,9 @@ class CarDetailsPage extends React.Component {
     return (
       <CarDetails
         car={car}
-        isCarSaved={false}
-        saveCar={() => {}}
-        unsaveCar={() => {}}
+        isCarSaved={isCarSaved}
+        saveCar={saveCar}
+        unsaveCar={unsaveCar}
       />
     )
   }
@@ -46,12 +46,19 @@ CarDetailsPage.propTypes = {
 const mapStateToProps = state => ({
   car: getCar(state),
   fetching: isFetching(state),
-  error: getError(state)
+  error: getError(state),
+  isCarSaved: isCarSaved(state)
 })
 
 const mapDispatchToProps = dispatch => ({
   fetchCar (stockNumber) {
     dispatch(fetchCar(stockNumber))
+  },
+  saveCar () {
+    dispatch(saveCar())
+  },
+  unsaveCar () {
+    dispatch(unsaveCar())
   }
 })
 
