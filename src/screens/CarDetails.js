@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import CarPropType from '../utils/propTypes/car'
 import CarDetails from '../components/CarDetailsPage'
 import PageNotFound from './PageNotFound'
+import ServerError from './ServerError'
 import { connect } from 'react-redux'
 import { fetchCar } from '../redux/middleware/app/car'
 import { getCar, isFetching, getError } from '../redux/ducks/car'
@@ -20,7 +21,7 @@ class CarDetailsPage extends React.Component {
 
     if (fetching) return 'Loading'
 
-    if (error) return <h1>ERROR - {error}</h1>
+    if (error) return <ServerError />
 
     if (!car) return <PageNotFound />
 
