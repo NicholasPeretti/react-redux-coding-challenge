@@ -8,6 +8,7 @@ import PaginationNav from './PaginationNav'
 import SubTitleBold from './SubTitleBold'
 import SubTitle from './SubTitle'
 import Style from '../style'
+import Skeleton from 'react-loading-skeleton'
 
 const Row = styled.div`
   display: flex;
@@ -39,27 +40,31 @@ class CarsListPaginated extends React.Component {
       mileageSort
     } = this.props
 
-    if (fetching) {
-      return <h3>Loading...</h3>
-    }
-
     return (
       <Column>
         <Row>
           <Column>
             <SubTitleBold>Available cars</SubTitleBold>
             <SubTitle style={{ margin: `${Style.spacing.padding3} 0px` }}>
-              Showing 1 of {totalPages} page{totalPages > 1 && 's'}
+              {fetching ? (
+                <Skeleton width={200}/>
+              ) : (
+                <span>
+                  Showing 1 of {totalPages} page{totalPages > 1 && 's'}
+                </span>
+              )}
             </SubTitle>
           </Column>
           <Column style={{ width: '40%' }}>
-            <CarsListSortBox
-              setSort={setSort}
-              value={mileageSort}
-            />
+            {!fetching && (
+              <CarsListSortBox
+                setSort={setSort}
+                value={mileageSort}
+              />
+            )}
           </Column>
         </Row>
-        <CarsList cars={cars} />
+        <CarsList cars={cars} fetching={fetching}/>
         <PaginationNav
           page={page}
           totalPages={totalPages}

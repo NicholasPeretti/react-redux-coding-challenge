@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import CarsListItemDescription from './CarsListItemDescription'
 import CarThumb from './CarThumb'
 import Style from '../style'
@@ -12,15 +13,16 @@ const StyledArticle = styled.article`
   margin: ${Style.spacing.padding1} 0px;
 `
 
-var CarsListItem = ({ car = {} }) => (
+var CarsListItem = ({ car = {}, fetching = false }) => (
   <StyledArticle>
-    <CarThumb url={car.pictureUrl} />
-    <CarsListItemDescription car={car}/>
+    <CarThumb url={car.pictureUrl} fetching={fetching} />
+    <CarsListItemDescription car={car} fetching={fetching} />
   </StyledArticle>
 )
 
 CarsListItem.propTypes = {
-  car: CarPropType.isRequired
+  car: CarPropType.isRequired,
+  fetching: PropTypes.bool
 }
 
 export default CarsListItem

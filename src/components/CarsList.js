@@ -4,6 +4,7 @@ import CarsListItem from './CarsListItem'
 import styled from 'styled-components'
 import CarPropType from '../utils/propTypes/car'
 import SubTitle from './Title'
+import { CarsList as MOCK_CARS } from '../utils/tests/data'
 
 const ListContainer = styled.div`
   display: flex;
@@ -16,7 +17,11 @@ const Center = styled.div`
   justify-content: center;
 `
 
-var CarsList = ({ cars }) => {
+var CarsList = ({ cars, fetching = false }) => {
+  if (fetching) {
+    cars = MOCK_CARS
+  }
+
   if (!cars.length) {
     return (
       <Center>
@@ -27,14 +32,15 @@ var CarsList = ({ cars }) => {
   return (
     <ListContainer>
       {cars.map((car, key) => (
-        <CarsListItem car={car} key={key} />
+        <CarsListItem car={car} key={key} fetching={fetching} />
       ))}
     </ListContainer>
   )
 }
 
 CarsList.propTypes = {
-  cars: PropTypes.arrayOf(CarPropType).isRequired
+  cars: PropTypes.arrayOf(CarPropType).isRequired,
+  fetching: PropTypes.bool
 }
 
 export default CarsList
