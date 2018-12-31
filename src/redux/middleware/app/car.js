@@ -1,6 +1,20 @@
-import { apiRequest, isApiAction, API_REQUEST, API_SUCCESS, API_ERROR } from '../core/api'
+import {
+  apiRequest,
+  isApiAction,
+  API_REQUEST,
+  API_SUCCESS,
+  API_ERROR
+} from '../core/api'
 import { GET_CARS } from '../../endpoints'
-import { NAMESPACE, setFetching, setError, setCar, SAVE_CAR, UNSAVE_CAR, getCar } from '../../ducks/car'
+import {
+  NAMESPACE,
+  setFetching,
+  setError,
+  setCar,
+  SAVE_CAR,
+  UNSAVE_CAR,
+  getCar
+} from '../../ducks/car'
 import { getCar as getCarFromCarsStore } from '../../ducks/cars'
 
 export const fetchCar = stockNumber => {
@@ -31,16 +45,30 @@ export default function middleware (store) {
 
     if (isApiAction(action, NAMESPACE) && action.type === API_REQUEST) {
       let stockNumber = getStockNumberFromAction(action)
-      let car = getCarFromCarsStore(
-        store.getState(),
-        stockNumber
-      )
+      let car = getCarFromCarsStore(store.getState(), stockNumber)
 
       if (car) {
-        action = { type: 'ABORT FETCH - DATA ALREADY STORED' }
+        action.type = 'ABORT FETCH - DATA ALREADY STORED'
         dispatch(action)
         dispatch(setCar(car))
         return
+      }
+
+      car = window.localStorage.getItem(stockNumber)
+      if (car) {
+        try {
+          car = JSON.parse(car)
+        } catch (e) {
+          car = null
+          window.localStorage.removeItem(stockNumber)
+        }
+
+        if (car) {
+          action.type = 'ABORT FETCH - DATA ALREADY STORED'
+          dispatch(action)
+          dispatch(setCar(car))
+          return
+        }
       }
 
       dispatch(setFetching(true))

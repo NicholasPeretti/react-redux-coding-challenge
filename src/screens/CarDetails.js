@@ -21,7 +21,7 @@ class CarDetailsPage extends React.Component {
 
     if (fetching) return 'Loading'
 
-    if (error) return <ServerError />
+    if (error && !car) return <ServerError />
 
     if (!car) return <PageNotFound />
 
