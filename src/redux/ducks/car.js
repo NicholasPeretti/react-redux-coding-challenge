@@ -21,14 +21,12 @@ export const setFetching = fetching => ({
   fetching
 })
 
-export const saveCar = stockNumber => ({
-  type: SAVE_CAR,
-  stockNumber
+export const saveCar = () => ({
+  type: SAVE_CAR
 })
 
-export const unsaveCar = stockNumber => ({
-  type: UNSAVE_CAR,
-  stockNumber
+export const unsaveCar = () => ({
+  type: UNSAVE_CAR
 })
 
 export const getState = state => state[NAMESPACE]
@@ -39,13 +37,15 @@ export const getError = state => getState(state).error
 
 export const isFetching = state => getState(state).fetching
 
-export const isCarSaved = state => getState(state).isCarSaved
+export const isCarSaved = state => {
+  let car = getCar(state)
+  return !!window.localStorage.getItem(car.stockNumber)
+}
 
 export const defaultState = {
   car: null,
   fetching: false,
-  error: null,
-  isCarSaved: false
+  error: null
 }
 
 export default function reducer (state = defaultState, action = {}) {
@@ -67,20 +67,6 @@ export default function reducer (state = defaultState, action = {}) {
     case SET_FETCHING: {
       state = Object.assign({}, state, {
         fetching: action.fetching
-      })
-      break
-    }
-
-    case SAVE_CAR: {
-      state = Object.assign({}, state, {
-        isCarSaved: true
-      })
-      break
-    }
-
-    case UNSAVE_CAR: {
-      state = Object.assign({}, state, {
-        isCarSaved: false
       })
       break
     }
