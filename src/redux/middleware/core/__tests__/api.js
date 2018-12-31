@@ -90,9 +90,10 @@ describe('api', () => {
     })
 
     test('apiError', () => {
-      expect(api.apiError(MOCK_DATA, MOCK_NAMESPACE)).toEqual({
+      const MOCK_ERROR = new Error('MOCK_ERROR')
+      expect(api.apiError(MOCK_ERROR, MOCK_NAMESPACE)).toEqual({
         type: api.API_ERROR,
-        payload: MOCK_DATA,
+        payload: MOCK_ERROR.toString(),
         meta: {
           namespace: MOCK_NAMESPACE
         }

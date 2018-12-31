@@ -14,11 +14,17 @@ export const apiSuccess = (data, namespace) => ({
   meta: { namespace }
 })
 
-export const apiError = (error, namespace) => ({
-  type: API_ERROR,
-  payload: error,
-  meta: { namespace }
-})
+export const apiError = (error, namespace) => {
+  if (typeof error === 'object') {
+    error = error.toString()
+  }
+
+  return {
+    type: API_ERROR,
+    payload: error,
+    meta: { namespace }
+  }
+}
 
 export const isApiAction = (action = {}, namespace) => {
   if (
