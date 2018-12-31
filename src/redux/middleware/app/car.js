@@ -1,6 +1,6 @@
 import { apiRequest, isApiAction, API_REQUEST, API_SUCCESS, API_ERROR } from '../core/api'
 import { GET_CARS } from '../../endpoints'
-import { NAMESPACE, setFetching, setError, setCar } from '../../ducks/car'
+import { NAMESPACE, setFetching, setError, setCar, SAVE_CAR, UNSAVE_CAR, getCar } from '../../ducks/car'
 import { getCar as getCarFromCarsStore } from '../../ducks/cars'
 
 export const fetchCar = stockNumber => {
@@ -12,6 +12,20 @@ export default function middleware (store) {
   return dispatch => action => {
     if (!isApiAction(action, NAMESPACE)) {
       dispatch(action)
+
+      switch (action.type) {
+        case SAVE_CAR: {
+          let car = getCar(store.getState())
+          window.localStorage.setItem(car.stockNumber, JSON.stringify(car))
+          break
+        }
+
+        case UNSAVE_CAR: {
+          let car = getCar(store.getState())
+          window.localStorage.removeItem(car.stockNumber)
+        }
+      }
+
       return
     }
 
