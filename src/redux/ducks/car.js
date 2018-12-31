@@ -3,6 +3,8 @@ export const NAMESPACE = 'CAR'
 export const SET_CAR = `${NAMESPACE} SET_CAR`
 export const SET_ERROR = `${NAMESPACE} SET_ERROR`
 export const SET_FETCHING = `${NAMESPACE} SET_FETCHING`
+export const SAVE_CAR = `${NAMESPACE} SAVE_CAR`
+export const UNSAVE_CAR = `${NAMESPACE} UNSAVE_CAR`
 
 export const setCar = car => ({
   type: SET_CAR,
@@ -19,6 +21,16 @@ export const setFetching = fetching => ({
   fetching
 })
 
+export const saveCar = stockNumber => ({
+  type: SAVE_CAR,
+  stockNumber
+})
+
+export const unsaveCar = stockNumber => ({
+  type: UNSAVE_CAR,
+  stockNumber
+})
+
 export const getState = state => state[NAMESPACE]
 
 export const getCar = state => getState(state).car
@@ -27,10 +39,13 @@ export const getError = state => getState(state).error
 
 export const isFetching = state => getState(state).fetching
 
+export const isCarSaved = state => getState(state).isCarSaved
+
 export const defaultState = {
   car: null,
   fetching: false,
-  error: null
+  error: null,
+  isCarSaved: false
 }
 
 export default function reducer (state = defaultState, action = {}) {
@@ -52,6 +67,20 @@ export default function reducer (state = defaultState, action = {}) {
     case SET_FETCHING: {
       state = Object.assign({}, state, {
         fetching: action.fetching
+      })
+      break
+    }
+
+    case SAVE_CAR: {
+      state = Object.assign({}, state, {
+        isCarSaved: true
+      })
+      break
+    }
+
+    case UNSAVE_CAR: {
+      state = Object.assign({}, state, {
+        isCarSaved: false
       })
       break
     }

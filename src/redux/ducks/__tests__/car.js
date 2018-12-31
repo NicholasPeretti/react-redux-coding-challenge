@@ -45,6 +45,32 @@ describe('Car', () => {
         expect(action.fetching).toEqual(true)
       })
     })
+
+    describe('saveCar', () => {
+      test('Should have the correct type', () => {
+        const action = Car.saveCar()
+        expect(action.type).toEqual(Car.SAVE_CAR)
+      })
+
+      test('Should have the correct value', () => {
+        const value = 'stockNumber'
+        const action = Car.saveCar(value)
+        expect(action.stockNumber).toEqual(value)
+      })
+    })
+
+    describe('unsaveCar', () => {
+      test('Should have the correct type', () => {
+        const action = Car.unsaveCar()
+        expect(action.type).toEqual(Car.UNSAVE_CAR)
+      })
+
+      test('Should have the correct value', () => {
+        const value = 'stockNumber'
+        const action = Car.unsaveCar(value)
+        expect(action.stockNumber).toEqual(value)
+      })
+    })
   })
 
   describe('Reducer', () => {
@@ -67,6 +93,20 @@ describe('Car', () => {
       test('Should set the `fetching` property', () => {
         const state = Car.default(null, Car.setFetching(true))
         expect(state.fetching).toEqual(true)
+      })
+    })
+
+    describe('saveCar', () => {
+      test('Should set `isCarSaved` to true', () => {
+        const state = Car.default(null, Car.saveCar())
+        expect(state.isCarSaved).toEqual(true)
+      })
+    })
+
+    describe('unsaveCar', () => {
+      test('Should set `isCarSaved` to false', () => {
+        const state = Car.default(null, Car.unsaveCar())
+        expect(state.isCarSaved).toEqual(false)
       })
     })
   })
@@ -101,6 +141,14 @@ describe('Car', () => {
         const globalState = getGlobalState()
         const fetching = Car.isFetching(globalState)
         expect(fetching).toEqual(Car.defaultState.fetching)
+      })
+    })
+
+    describe('isCarSaved', () => {
+      test('Should return the `isCarSaved` property', () => {
+        const globalState = getGlobalState()
+        const isCarSaved = Car.isCarSaved(globalState)
+        expect(isCarSaved).toEqual(Car.defaultState.isCarSaved)
       })
     })
   })
